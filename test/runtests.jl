@@ -23,7 +23,7 @@ configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson")
             "op-query") == result
 
         @test playback(
-            () -> Overpass.query("test/test.overpassql", bbox = (48, 16, 49, 17)),
+            () -> Overpass.query(string(@__DIR__, "/test.overpassql"), bbox = (48, 16, 49, 17)),
             "op-query") == result
 
         @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
@@ -107,7 +107,7 @@ configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson")
         url = "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B"
         @test Overpass.turbo_url("[out:json];node[amenity=drinking_water]({{bbox}});out;") ==
               url
-        @test Overpass.turbo_url("test/test.overpassql") == url
+        @test Overpass.turbo_url(string(@__DIR__, "/test.overpassql")) == url
     end
 
     @testset "unsescapehtml" begin
@@ -122,7 +122,7 @@ configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson")
         end
 
         @testset "read file" begin
-            @test Overpass.get_query("test/test.overpassql") ==
+            @test Overpass.get_query(string(@__DIR__, "/test.overpassql")) ==
                   "[out:json];node[amenity=drinking_water]({{bbox}});out;"
         end
 
