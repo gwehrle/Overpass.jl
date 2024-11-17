@@ -1,0 +1,6 @@
+[deps]
+BrokenRecord = "bdd55f5b-6e67-4da1-a080-6086e55655a0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Preferences = "21216c6a-2e73-6563-6e65-726566657250"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

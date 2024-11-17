@@ -1,0 +1,1 @@
+[out:json];node[amenity=drinking_water]({{bbox}});out;

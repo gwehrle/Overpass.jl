@@ -1,9 +1,19 @@
 name = "Overpass"
 uuid = "834259d5-5bc3-4baf-8c23-ac7b5902f5e3"
 authors = ["Gregor Wehrle <171450664+gwehrle@users.noreply.github.com> and contributors"]
-version = "1.0.0-DEV"
+version = "0.0.1-DEV"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Preferences = "21216c6a-2e73-6563-6e65-726566657250"
+URIs = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
 
 [compat]
+Dates = "1.11.0"
+HTTP = "1.10.8"
+Preferences = "1.4.3"
+URIs = "1.5.1"
 julia = "1.6.7"
 
 [extras]
