@@ -10,7 +10,7 @@ Julia wrapper for the OpenStreetMap [Overpass API](https://wiki.openstreetmap.or
 - Query Overpass API
 - Helper functions
 - Meaningful error messages
-- Few dependecies
+- Few dependencies
 
 
 Inspired by the python packages [overpy](https://github.com/DinoTools/python-overpy) and [overpass](https://github.com/mvexel/overpass-api-python-wrapper?tab=readme-ov-file).
@@ -37,7 +37,7 @@ For short queries it is also possible to inline it directly:
 Overpass.query("node[amenity=drinking_water]({{bbox}});out;", bbox=(48,16,49,17))
 ```
 
-To keep the packet small and flexible, the response is not parsed and returned as a string. Depending on the use case, the string can then be parsed, saved, etc.
+To keep the package small and flexible, the response is not parsed and returned as a string. Depending on the use case, the string can then be parsed, saved, etc.
 
 | Argument | Description                                   | Datatype          |
 | -------- | --------------------------------------------- | ----------------- |
@@ -58,7 +58,7 @@ See [list of endpoints in OSM Wiki](https://wiki.openstreetmap.org/wiki/Overpass
 
 ### Status
 
-Recieve current Status of Overpass API.
+Receive current Status of Overpass API.
 
 ```julia
 Overpass.status()
@@ -101,4 +101,4 @@ These [Overpass Turbo shortcuts](https://wiki.openstreetmap.org/wiki/Overpass_tu
 | ----------------- | ---------------------------------------------------- |
 | LightOSM.jl       | Download, save and analyze networks via Overpass API |
 | OpenStreetMapX.jl | Analyze OSM roads from .osm or .pbf files            |
-| OSMToolset.jl     | Read and analyze OSM from OSM XML files              |
+| OSMToolset.jl     | Read and analyze OSM XML files              |

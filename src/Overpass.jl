@@ -13,7 +13,7 @@ Center = Union{Nothing, NTuple{2, Number}}
 """
     query(query_or_file::String; <keyword arguments>)::String
 
-Get response to `query_or_file` from Overpass API.
+Get a response to `query_or_file` from Overpass API.
 
 The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
 
@@ -80,7 +80,7 @@ end
 """
     status()::OverpassStatus
 
-Recieve current Status of Overpass API.
+Receive current Status of Overpass API.
 
 OverpassStatus provides the following fields:
 - connection_id::String
@@ -181,7 +181,7 @@ end
 """
     replace_shortcuts(query::AbstractString, bbox::Bbox, center::Center)::AbstractString
 
-Fill shortcuts with defined replacements in query.
+Fill shortcuts with defined replacements in the query.
 
 Throws errors if unreplaced shortcuts are found.
 """
