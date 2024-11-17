@@ -10,7 +10,7 @@ Preferences = "21216c6a-2e73-6563-6e65-726566657250"
 URIs = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
 
 [compat]
-Dates = "1.11.0"
+Dates = "1.6 - 1.11.0"
 HTTP = "1.10.8"
 Preferences = "1.4.3"
 URIs = "1.5.1"
