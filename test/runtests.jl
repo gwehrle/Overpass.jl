@@ -23,7 +23,8 @@ configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson")
             "op-query") == result
 
         @test playback(
-            () -> Overpass.query(string(@__DIR__, "/test.overpassql"), bbox = (48, 16, 49, 17)),
+            () -> Overpass.query(
+                string(@__DIR__, "/test.overpassql"), bbox = (48, 16, 49, 17)),
             "op-query") == result
 
         @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
