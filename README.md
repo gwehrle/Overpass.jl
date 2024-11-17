@@ -49,9 +49,9 @@ To keep the package small and flexible, the response is not parsed and returned 
 Sets the endpoint for the Overpass API.
 
 ```julia
-Overpass.set_endpoint("https://overpass.private.coffee/api/interpreter")
+Overpass.set_endpoint("https://overpass.private.coffee/api/")
 ```
-Default endpoint is https://overpass-api.de/api/interpreter/.
+Default endpoint is https://overpass-api.de/api/.
 See [list of endpoints in OSM Wiki](https://wiki.openstreetmap.org/wiki/Overpass_API#Public_Overpass_API_instances).
 
 ⚠️ Endpoint URL must have a trailing slash
