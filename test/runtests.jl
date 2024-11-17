@@ -5,7 +5,7 @@ using HTTP
 using Preferences
 using Dates
 
-configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson")
+configure!(; path = string(@__DIR__, "/HTTP/"), extension = "bson", ignore_headers=["User-Agent"])
 
 @testset "Overpass.jl" begin
     @testset "query" begin
