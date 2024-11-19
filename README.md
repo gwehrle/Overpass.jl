@@ -24,7 +24,7 @@ pkg> add Overpass
 
 ### Query overpass
 
-**💡 Use [Overpass Turbo](https://overpass-turbo.eu/) to build your queries and use the *export* feature to them as `.overpassql`**
+**💡 Tipp: Use [Overpass Turbo](https://overpass-turbo.eu/) to build your queries and use the *export* feature to save them as `.overpassql`**
 
 ```julia
 using Overpass
@@ -37,12 +37,14 @@ For short queries it is also possible to inline it directly:
 Overpass.query("node[amenity=drinking_water]({{bbox}});out;", bbox=(48,16,49,17))
 ```
 
-To keep the package small and flexible, the response is not parsed and returned as a string. Depending on the use case, the string can then be parsed, saved, etc.
-
 | Argument | Description                                   | Datatype          |
 | -------- | --------------------------------------------- | ----------------- |
 | bbox     | Coordinates to replace `{{bbox}}` shortcut    | NTuple{4, Number} |
 | center   | Coordinates to replace `{{center}}`  shortcut | NTuple{2, Number} |
+
+### Result parsing
+
+To keep the package small and flexible, the response is not parsed but returned as a string. Depending on the use case, the string can then be parsed, saved, etc.
 
 ### Change Overpass endpoint
 
@@ -56,9 +58,9 @@ See [list of endpoints in OSM Wiki](https://wiki.openstreetmap.org/wiki/Overpass
 
 ⚠️ Endpoint URL must have a trailing slash
 
-### Status
+### Endpoint status
 
-Receive current Status of Overpass API.
+Receive current Status of Overpass API endpoint.
 
 ```julia
 Overpass.status()

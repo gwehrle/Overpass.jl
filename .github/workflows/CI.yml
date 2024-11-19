@@ -23,13 +23,18 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.11'
-          - '1.10'
-          - 'pre'
-        os:
-          - ubuntu-latest
-        arch:
-          - x64
+          - 'lts' # latest LTS build
+          - '1' # current
+          - 'pre' # latest prerelease build (RCs, betas, and alphas
+        arch: [x64, x86, aarch64]
+        os: [macOS-latest, ubuntu-latest, windows-latest]
+        exclude:
+          - os: macOS-latest
+            arch: x86
+          - os: ubuntu-latest
+            arch: aarch64
+          - os: windows-latest
+            arch: aarch64
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
