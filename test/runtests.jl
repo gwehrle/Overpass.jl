@@ -54,7 +54,7 @@ configure!(;
         @testset "default endpoint" begin
             status = playback(() -> Overpass.status(), "op-status")
 
-            @test status isa Overpass.OverpassStatus
+            @test status isa Overpass.EndpointStatus
             @test status.connection_id == "3158479246"
             @test status.server_time == DateTime("2024-11-11T23:37:10")
             @test status.endpoint == "lambert.openstreetmap.de/"
@@ -66,7 +66,7 @@ configure!(;
             Overpass.set_endpoint("https://maps.mail.ru/osm/tools/overpass/api/")
             status = playback(() -> Overpass.status(), "op-status-ru")
 
-            @test status isa Overpass.OverpassStatus
+            @test status isa Overpass.EndpointStatus
             @test status.connection_id == "1293416468"
             @test status.server_time == DateTime("2024-11-11T23:56:34")
             @test isnothing(status.endpoint)
@@ -80,7 +80,7 @@ configure!(;
             Overpass.set_endpoint("https://overpass.private.coffee/api/")
             status = playback(() -> Overpass.status(), "op-status-coffee")
 
-            @test status isa Overpass.OverpassStatus
+            @test status isa Overpass.EndpointStatus
             @test status.connection_id == "177472788"
             @test status.server_time == DateTime("2024-11-12T00:03:37")
             @test status.endpoint == "none"
@@ -94,7 +94,7 @@ configure!(;
             Overpass.set_endpoint("https://overpass.osm.jp/api/")
             status = playback(() -> Overpass.status(), "op-status-jp")
 
-            @test status isa Overpass.OverpassStatus
+            @test status isa Overpass.EndpointStatus
             @test status.connection_id == "1293416468"
             @test status.server_time == DateTime("2024-11-12T00:04:21")
             @test status.endpoint == "none"

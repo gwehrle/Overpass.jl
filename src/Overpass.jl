@@ -9,6 +9,17 @@ export query, set_endpoint, status, turbo_url
 # TYPES
 Bbox = Union{Nothing, NTuple{4, Number}}
 Center = Union{Nothing, NTuple{2, Number}}
+struct EndpointStatus
+    connection_id::String
+    server_time::DateTime
+    endpoint::Union{Nothing, String}
+    rate_limit::Int
+    avalible_slots::Union{Nothing, Int}
+end
+
+# HARD-CODED URLS
+DEFAULT_ENDPOINT = "https://overpass-api.de/api/"
+OVERPASS_TURBO_URL = "https://overpass-turbo.eu/"
 
 """
     query(query_or_file::String; <keyword arguments>)::String
@@ -25,7 +36,7 @@ See also [`set_endpoint`](@ref) to change Overpass API endpoint.
 """
 function query(
         query_or_file::String; bbox::Bbox = nothing, center::Center = nothing)::String
-    url = @load_preference("endpoint", "https://overpass-api.de/api/") * "interpreter"
+    url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "interpreter"
 
     query = get_query(query_or_file)
     query = replace_shortcuts(query, bbox, center)
@@ -78,11 +89,11 @@ function set_endpoint(endpoint::Union{Nothing, String} = nothing)::Bool
 end
 
 """
-    status()::OverpassStatus
+    status()::EndpointStatus
 
 Receive current Status of Overpass API.
 
-OverpassStatus provides the following fields:
+EndpointStatus provides the following fields:
 - connection_id::String
 - server_time::DateTime
 - endpoint::Union{Nothing, String}
@@ -91,8 +102,8 @@ OverpassStatus provides the following fields:
 
 See also [`set_endpoint`](@ref) to change Overpass API endpoint.
 """
-function status()::OverpassStatus
-    url = @load_preference("endpoint", "https://overpass-api.de/api/") * "status"
+function status()::EndpointStatus
+    url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "status"
 
     response = HTTP.get(url)
 
@@ -108,7 +119,7 @@ function status()::OverpassStatus
 
     @debug "Status regex matches" matches
 
-    status = OverpassStatus(
+    status = EndpointStatus(
         matches[:connection_id],
         DateTime(matches[:server_time], "yyyy-mm-ddTHH:MM:SSZ"),
         matches[:endpoint],
@@ -129,18 +140,9 @@ The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
 Can be helpful to debug queries.
 """
 function turbo_url(query_or_file::String)::String
-    overpass_turbo_url = "https://overpass-turbo.eu/"
     query = get_query(query_or_file)
 
-    return overpass_turbo_url * "?Q=" * escapeuri(query)
-end
-
-struct OverpassStatus
-    connection_id::String
-    server_time::DateTime
-    endpoint::Union{Nothing, String}
-    rate_limit::Int
-    avalible_slots::Union{Nothing, Int}
+    return OVERPASS_TURBO_URL * "?Q=" * escapeuri(query)
 end
 
 """
