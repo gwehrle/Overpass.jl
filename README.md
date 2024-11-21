@@ -24,11 +24,14 @@ pkg> add Overpass
 
 ### Query overpass
 
+Get requested elements from OpenStreetMap through Overpass API. The result is provided as _string_ and has to be parsed depending on the format you specified in your query.
+
 **💡 Tipp: Use [Overpass Turbo](https://overpass-turbo.eu/) to build your queries and use the *export* feature to save them as `.overpassql`**
 
 ```julia
 using Overpass
 Overpass.query("waterfountains.overpassql")
+# "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<osm…"
 ```
 `Overpass.query` can handle `.overpassql` and `.ql` files.
 For short queries it is also possible to inline it directly:
@@ -75,14 +78,17 @@ The returned OverpassStatus struct provides the following fields:
 
 ### Overpass turbo URL
 
-```julia
-Overpass.turbo_url("waterfountains.overpassql")
-```
+Get URL to open your query in Overpass Turbo.
 
-Transform Overpass Query to Overpass Turbo URL.
+Overpass Turbo is a web based graphical user interface for Overpass.
+Its very useful to build and debug your queries with Overpass Turbo.
 
 The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
-Can be helpful to debug queries.
+
+```julia
+Overpass.turbo_url("waterfountains.overpassql")
+# "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water…"
+```
 
 ### Overpass Turbo shortcuts
 
