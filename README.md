@@ -66,7 +66,7 @@ Receive current Status of Overpass API endpoint.
 Overpass.status()
 ```
 
-The returned EndpointStatus struct provides the following fields:
+The returned Status struct provides the following fields:
 - `connection_id::String`
 - `server_time::DateTime`
 - `endpoint::Union{Nothing, String}`

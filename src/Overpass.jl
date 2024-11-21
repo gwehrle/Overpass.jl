@@ -9,7 +9,7 @@ export query, set_endpoint, status, turbo_url
 # TYPES
 Bbox = Union{Nothing, NTuple{4, Number}}
 Center = Union{Nothing, NTuple{2, Number}}
-struct EndpointStatus
+struct Status
     connection_id::String
     server_time::DateTime
     endpoint::Union{Nothing, String}
@@ -89,11 +89,11 @@ function set_endpoint(endpoint::Union{Nothing, String} = nothing)::Bool
 end
 
 """
-    status()::EndpointStatus
+    status()::Status
 
 Receive current Status of Overpass API.
 
-EndpointStatus provides the following fields:
+Status provides the following fields:
 - connection_id::String
 - server_time::DateTime
 - endpoint::Union{Nothing, String}
@@ -102,7 +102,7 @@ EndpointStatus provides the following fields:
 
 See also [`set_endpoint`](@ref) to change Overpass API endpoint.
 """
-function status()::EndpointStatus
+function status()::Status
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "status"
 
     response = HTTP.get(url)
@@ -119,7 +119,7 @@ function status()::EndpointStatus
 
     @debug "Status regex matches" matches
 
-    status = EndpointStatus(
+    status = Status(
         matches[:connection_id],
         DateTime(matches[:server_time], "yyyy-mm-ddTHH:MM:SSZ"),
         matches[:endpoint],
