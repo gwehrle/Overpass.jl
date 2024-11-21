@@ -38,7 +38,7 @@ function query(
         @debug("Data recieved")
         return String(resp.body)
     catch error
-        if error.status == 400
+        if isa(error, HTTP.StatusError) && error.status == 400
             str = String(error.response.body)
             regex = r"""<p><strong style=\"color:#FF0000\">Error<\/strong>:(?<msg>.+)<\/p>"""i
             errormessages = join(
@@ -203,10 +203,10 @@ function replace_shortcuts(
     for match in eachmatch(r"\{\{\s*(?<shortcut>\w+)\s*\}\}"i, query)
         if match[:shortcut] == "bbox" && isnothing(bbox)
             throw(MissingException("""{{bbox}} found in query, but no value specified.
-            Use keywordargument "bbox": Overpass.query(…, bbox=(50.0,50.0,50.0,50.0))"""))
+            Use keywordargument "bbox": Overpass.query(…, bbox = (48.22, 16.36, 48.22, 16.36))"""))
         elseif match[:shortcut] == "center" && isnothing(center)
             throw(MissingException("""{{center}} found in query, but no value specified.
-            Use keywordargument "center": Overpass.query(…, center=(50.0,50.0))"""))
+            Use keywordargument "center": Overpass.query(…, center = (48.22, 16.36))"""))
         else
             throw(DomainError(
                 query, """Unsupported shortcut in query: \"""" * match.match * """\".

@@ -30,14 +30,15 @@ Get requested elements from OpenStreetMap through Overpass API. The result is pr
 
 ```julia
 using Overpass
-Overpass.query("waterfountains.overpassql")
-# "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<osm…"
+Overpass.query("waterfountains.overpassql", bbox=(48.22, 16.36, 48.22, 16.36))
+# "{\n  \"version\": 0.6,\n  \"generator\": \"Overpass API…"
 ```
 `Overpass.query` can handle `.overpassql` and `.ql` files.
 For short queries it is also possible to inline it directly:
 ```julia
 # Standard example of https://overpass-turbo.eu/
-Overpass.query("node[amenity=drinking_water]({{bbox}});out;", bbox=(48,16,49,17))
+Overpass.query("[out:json];node[amenity=drinking_water]({{bbox}});out;", bbox=(48.22, 16.36, 48.22, 16.36))
+# "{\n  \"version\": 0.6,\n  \"generator\": \"Overpass API…"
 ```
 
 | Argument | Description                                   | Datatype          |

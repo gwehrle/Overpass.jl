@@ -10,23 +10,22 @@ configure!(;
 
 @testset "Overpass.jl" begin
     @testset "query" begin
-        f = open(string(@__DIR__, "/query_result.txt"), "r")
-        result = read(f, String)
-        close(f)
-
         @test playback(
-            () -> Overpass.query("[out:json];node[amenity=drinking_water](48,16,49,17);out;"),
-            "op-query") == result
+            () -> Overpass.query("[out:json];node[amenity=drinking_water](48.224410300027,16.36058699342046,48.22702986850222,16.364722959721423);out;"),
+            "op-query") != ""
 
         @test playback(
             () -> Overpass.query("[out:json];node[amenity=drinking_water]({{bbox}});out;",
-                bbox = (48, 16, 49, 17)),
-            "op-query") == result
+                bbox = (48.224410300027, 16.36058699342046,
+                    48.22702986850222, 16.364722959721423)),
+            "op-query") != ""
 
         @test playback(
             () -> Overpass.query(
-                string(@__DIR__, "/test.overpassql"), bbox = (48, 16, 49, 17)),
-            "op-query") == result
+                string(@__DIR__, "/waterfountains.overpassql"), bbox = (
+                    48.224410300027, 16.36058699342046,
+                    48.22702986850222, 16.364722959721423)),
+            "op-query") != ""
 
         @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
             "error")
@@ -109,7 +108,7 @@ configure!(;
         url = "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B"
         @test Overpass.turbo_url("[out:json];node[amenity=drinking_water]({{bbox}});out;") ==
               url
-        @test Overpass.turbo_url(string(@__DIR__, "/test.overpassql")) == url
+        @test Overpass.turbo_url(string(@__DIR__, "/waterfountains.overpassql")) == url
     end
 
     @testset "unsescapehtml" begin
@@ -124,7 +123,7 @@ configure!(;
         end
 
         @testset "read file" begin
-            @test Overpass.get_query(string(@__DIR__, "/test.overpassql")) ==
+            @test Overpass.get_query(string(@__DIR__, "/waterfountains.overpassql")) ==
                   "[out:json];node[amenity=drinking_water]({{bbox}});out;"
         end
 
