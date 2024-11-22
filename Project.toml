@@ -14,9 +14,3 @@ HTTP = "1.10.8"
 Preferences = "1.4.3"
 URIs = "1.5.1"
 julia = "1.10"
-
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[targets]
-test = ["Test"]

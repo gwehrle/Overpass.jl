@@ -155,3 +155,5 @@ configure!(;
             "{{ custom }}", nothing, nothing)
     end
 end
+
+include("Aqua.jl")
