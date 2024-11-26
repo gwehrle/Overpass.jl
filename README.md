@@ -28,7 +28,7 @@ pkg> add Overpass
 
 Get requested elements from OpenStreetMap through Overpass API. The result is provided as _string_ and has to be parsed depending on the format you specified in your query.
 
-**💡 Tipp: Use [Overpass Turbo](https://overpass-turbo.eu/) to build your queries and use the *export* feature to save them as `.overpassql`**
+**💡 Tipp: Use [Overpass Turbo](https://overpass-turbo.eu/) to build your queries and use the *export* feature to save them as `.overpassql` either as `standalone` or `raw`**
 
 ```julia
 using Overpass
