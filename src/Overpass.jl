@@ -217,7 +217,7 @@ See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_
 function replace_date_shortcuts(query::AbstractString)::AbstractString
     if occursin("{{date", query)
         # Get the current date and time
-        current_date = now()
+        current_date = now(tz"UTC")
 
         # Define the regex pattern for placeholders
         pattern = r"\{\{date(?::([0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\}\}"
