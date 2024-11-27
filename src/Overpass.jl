@@ -127,7 +127,7 @@ function status()::Status
 
     status = Status(
         matches[:connection_id],
-        DateTime(matches[:server_time], "yyyy-mm-ddTHH:MM:SSZ"),
+        DateTime(matches[:server_time], dateformat"yyyy-mm-ddTHH:MM:SSz"),
         matches[:endpoint],
         parse(Int, matches[:rate_limit]),
         isnothing(matches[:avalible_slots]) ? nothing :
@@ -217,11 +217,11 @@ See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_
 function replace_date_shortcuts(query::AbstractString)::AbstractString
     if occursin("{{date", query)
         # Get the current date and time
-        current_date = now(tz"UTC")
+        current_date = now()
 
         # Define the regex pattern for placeholders
         pattern = r"\{\{date(?::([0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\}\}"
-        
+
         # Map string units to Dates.Period constructors
         period_map = Dict(
             "year" => Year,
