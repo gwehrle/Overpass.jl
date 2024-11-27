@@ -108,7 +108,8 @@ configure!(;
         url = "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B"
         @test Overpass.turbo_url("[out:json];node[amenity=drinking_water]({{bbox}});out;") ==
               url
-        @test Overpass.turbo_url(string(@__DIR__, "/queries/drinking_water_simple.overpassql")) == url
+        @test Overpass.turbo_url(string(
+            @__DIR__, "/queries/drinking_water_simple.overpassql")) == url
     end
 
     @testset "unsescapehtml" begin
@@ -123,7 +124,8 @@ configure!(;
         end
 
         @testset "read file" begin
-            @test Overpass.get_query(string(@__DIR__, "/queries/drinking_water_simple.overpassql")) ==
+            @test Overpass.get_query(string(
+                @__DIR__, "/queries/drinking_water_simple.overpassql")) ==
                   "[out:json];node[amenity=drinking_water]({{bbox}});out;"
         end
 
