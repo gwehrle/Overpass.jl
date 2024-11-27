@@ -146,13 +146,12 @@ configure!(;
         @test Overpass.replace_shortcuts(
             "Lorem {{ bbox \n}} {{\ncenter \n\n      }} ipsum", (1, 2, 3, 4), (5, 6)) ==
               "Lorem 1,2,3,4 5,6 ipsum"
+    end
 
-        @test_throws MissingException Overpass.replace_shortcuts(
-            "{{bbox}}", nothing, nothing)
-        @test_throws MissingException Overpass.replace_shortcuts(
-            "{{center}}", nothing, nothing)
-        @test_throws DomainError Overpass.replace_shortcuts(
-            "{{ custom }}", nothing, nothing)
+    @testset "check_remaining_shortcuts" begin
+        @test_throws MissingException Overpass.check_remaining_shortcuts("{{bbox}}")
+        @test_throws MissingException Overpass.check_remaining_shortcuts("{{center}}")
+        @test_throws DomainError Overpass.check_remaining_shortcuts("{{ custom }}")
     end
 end
 

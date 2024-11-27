@@ -39,7 +39,7 @@ function query(
         query_or_file::String;
         bbox::Bbox = nothing,
         center::Center = nothing
-    )::String
+)::String
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "interpreter"
 
     query = get_query(query_or_file)
@@ -236,7 +236,7 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
         for match in eachmatch(pattern, query)
             # Extract captured groups
             duration_value, duration_unit = match.captures
-            @debug ""  match.captures
+            @debug "" match.captures
 
             # Compute the replacement date
             replacement_date = if duration_value !== nothing && duration_unit !== nothing
