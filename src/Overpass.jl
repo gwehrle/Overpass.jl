@@ -265,11 +265,11 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
 end
 
 """
-    check_remaining_shortcuts(query::AbstractString)::nothing
+    check_remaining_shortcuts(query::AbstractString)::Nothing
 
 Check a query for unreplaced overpass turbo shortcuts and throws errors if unreplaced shortcuts are found.
 """
-function check_remaining_shortcuts(query::AbstractString)::nothing
+function check_remaining_shortcuts(query::AbstractString)::Nothing
     for match in eachmatch(r"\{\{\s*(?<shortcut>\w+)\s*\}\}"i, query)
         if match[:shortcut] == "bbox"
             throw(MissingException("""{{bbox}} found in query, but no value specified.
