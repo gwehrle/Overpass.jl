@@ -22,7 +22,7 @@ configure!(;
 
         @test playback(
             () -> Overpass.query(
-                string(@__DIR__, "/waterfountains.overpassql"), bbox = (
+                string(@__DIR__, "/queries/drinking_water_simple.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
                     48.22702986850222, 16.364722959721423)),
             "op-query") != ""
@@ -108,7 +108,8 @@ configure!(;
         url = "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water%5D%28%7B%7Bbbox%7D%7D%29%3Bout%3B"
         @test Overpass.turbo_url("[out:json];node[amenity=drinking_water]({{bbox}});out;") ==
               url
-        @test Overpass.turbo_url(string(@__DIR__, "/waterfountains.overpassql")) == url
+        @test Overpass.turbo_url(string(
+            @__DIR__, "/queries/drinking_water_simple.overpassql")) == url
     end
 
     @testset "unsescapehtml" begin
@@ -123,7 +124,8 @@ configure!(;
         end
 
         @testset "read file" begin
-            @test Overpass.get_query(string(@__DIR__, "/waterfountains.overpassql")) ==
+            @test Overpass.get_query(string(
+                @__DIR__, "/queries/drinking_water_simple.overpassql")) ==
                   "[out:json];node[amenity=drinking_water]({{bbox}});out;"
         end
 
@@ -146,13 +148,12 @@ configure!(;
         @test Overpass.replace_shortcuts(
             "Lorem {{ bbox \n}} {{\ncenter \n\n      }} ipsum", (1, 2, 3, 4), (5, 6)) ==
               "Lorem 1,2,3,4 5,6 ipsum"
+    end
 
-        @test_throws MissingException Overpass.replace_shortcuts(
-            "{{bbox}}", nothing, nothing)
-        @test_throws MissingException Overpass.replace_shortcuts(
-            "{{center}}", nothing, nothing)
-        @test_throws DomainError Overpass.replace_shortcuts(
-            "{{ custom }}", nothing, nothing)
+    @testset "check_remaining_shortcuts" begin
+        @test_throws MissingException Overpass.check_remaining_shortcuts("{{bbox}}")
+        @test_throws MissingException Overpass.check_remaining_shortcuts("{{center}}")
+        @test_throws DomainError Overpass.check_remaining_shortcuts("{{ custom }}")
     end
 end
 
