@@ -100,12 +100,12 @@ Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 - See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts
 """
 function replace_date_shortcuts(query::AbstractString)::AbstractString
-    if occursin("{{date", query)
+    if occursin(r"\{\{\s*?date", query)
         # Get the current date and time
         current_date = now(tz"UTC")
 
         # Define the regex pattern for placeholders
-        pattern = r"\{\{date(?::(-?\+?[0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\}\}"
+        pattern = r"\{\{\s*?date\s*?(?::\s*?(-?\+?[0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\s*?\}\}"
 
         # Map string units to Dates.Period constructors
         period_map = Dict(
