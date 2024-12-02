@@ -90,7 +90,7 @@ function replace_center_shortcuts(
 end
 
 """
-    replace_date_shortcuts!(query::AbstractString)::AbstractString
+    replace_date_shortcuts(query::AbstractString)::AbstractString
 
 Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 
@@ -105,7 +105,7 @@ Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 - The output format is ISO 8601 with a `Z` suffix for UTC.
 - See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts
 """
-function replace_date_shortcuts!(query::AbstractString)::AbstractString
+function replace_date_shortcuts(query::AbstractString)::AbstractString
     if occursin("{{date", query)
         # Get the current date and time
         current_date = now(tz"UTC")

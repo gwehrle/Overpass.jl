@@ -24,7 +24,7 @@ DEFAULT_ENDPOINT = "https://overpass-api.de/api/"
 OVERPASS_TURBO_URL = "https://overpass-turbo.eu/"
 
 # include package files
-include(shortcuts.jl)
+include("shortcuts.jl")
 
 """
     query(query_or_file::String; bbox::Bbox=nothing, center::Center=nothing)::String
