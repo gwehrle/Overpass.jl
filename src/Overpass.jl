@@ -27,17 +27,23 @@ OVERPASS_TURBO_URL = "https://overpass-turbo.eu/"
 include(shortcuts.jl)
 
 """
-    query(query_or_file::String; <keyword arguments>)::String
+    query(query_or_file::String; bbox::Bbox=nothing, center::Center=nothing)::String
 
-Get a response to `query_or_file` from Overpass API.
+Sends a query to the Overpass API and retrieves the response as a string.
 
-The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
+The query can be provided directly or by specifying the path to a `.ql` or `.overpassql` file. Supports replacement of shortcuts like `{{bbox}}` and `{{center}}`.
 
 # Arguments
-- `bbox::NTuple{4, Number}`: Replacement value for `{{bbox}}` in query.
-- `center::NTuple{2, Number}`: Replacement value for `{{center}}` in query.
+- `query_or_file::String`: The Overpass query string or path to a query file.
+- `bbox::Bbox`: Optional bounding box `(min_lat, min_lon, max_lat, max_lon)` to replace `{{bbox}}` in the query.
+- `center::Center`: Optional center point `(lat, lon)` to replace `{{center}}` in the query.
 
-See also [`set_endpoint`](@ref) to change Overpass API endpoint.
+# Returns
+- `String`: The response from the Overpass API.
+
+# Notes
+- To change the Overpass API endpoint, use the `set_endpoint` function.
+- Throws a `DomainError` if the query is invalid or the Overpass API returns an error.
 """
 function query(
         query_or_file::String;
@@ -71,12 +77,19 @@ function query(
 end
 
 """
-    set_endpoint(endpoint::Union{Nothing, String})
+    set_endpoint(endpoint::Union{Nothing, String}=nothing)::Bool
 
-Change Overpass endpoint for all functions.
+Sets or resets the Overpass API endpoint for all queries.
 
-Endpoint needs to be an URL with trailing slash.
-If set to `nothing` the default endpoint is used.
+# Arguments
+- `endpoint::Union{Nothing, String}`: The Overpass API endpoint URL. 
+  Must end with a trailing slash. If set to `nothing`, the default endpoint is restored.
+
+# Returns
+- `Bool`: `true` if the endpoint is successfully set, otherwise `false`.
+
+# Notes
+- If the endpoint does not have a trailing slash, the function issues a warning and does not set the endpoint.
 """
 function set_endpoint(endpoint::Union{Nothing, String} = nothing)::Bool
     if isnothing(endpoint)
@@ -99,16 +112,19 @@ end
 """
     status()::Status
 
-Receive current Status of Overpass API.
+Fetches and parses the current status of the Overpass API.
 
-Status provides the following fields:
-- connection_id::String
-- server_time::DateTime
-- endpoint::Union{Nothing, String}
-- rate_limit::Int
-- avalible_slots::Union{Nothing, Int}
+# Returns
+- `Status`: A struct containing the following fields:
+  - `connection_id::String`: The connection ID assigned by the server.
+  - `server_time::DateTime`: The current server time in UTC.
+  - `endpoint::Union{Nothing, String}`: The announced endpoint (if any).
+  - `rate_limit::Int`: The rate limit (requests per minute).
+  - `avalible_slots::Union{Nothing, Int}`: The number of available slots for requests, or `nothing` if unavailable.
 
-See also [`set_endpoint`](@ref) to change Overpass API endpoint.
+# Notes
+- Use `set_endpoint` to modify the API endpoint before calling this function.
+- Throws an error if the API status response cannot be parsed.
 """
 function status()::Status
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "status"
@@ -142,10 +158,21 @@ end
 """
     turbo_url(query_or_file::String)::String
 
-Transform Overpass Query to Overpass Turbo URL.
+Generates an Overpass Turbo URL for a given query.
 
-The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
-Can be helpful to debug queries.
+This is useful for debugging queries visually in the Overpass Turbo interface.
+
+# Arguments
+- `query_or_file::String`: The Overpass query string or path to a query file.
+
+# Returns
+- `String`: The generated Overpass Turbo URL.
+
+# Example
+```julia
+julia> turbo_url("[out:json];node[amenity=school](50.6,7.0,50.8,7.3);out;")
+"https://overpass-turbo.eu/?Q=[out:json];node[amenity=school](50.6,7.0,50.8,7.3);out;"
+```
 """
 function turbo_url(query_or_file::String)::String
     query = get_query(query_or_file)
@@ -154,9 +181,21 @@ function turbo_url(query_or_file::String)::String
 end
 
 """
-    unescapehtml(i::String)
+    unescapehtml(i::AbstractString)::AbstractString
 
-Returns a string with special HTML characters unescaped: &, <, >, ", '
+Unescapes special HTML characters (`&`, `<`, `>`, `"`, `'`) in a string.
+
+# Arguments
+- `i::AbstractString`: The input string with HTML entities.
+
+# Returns
+- `AbstractString`: A string with HTML entities replaced by their corresponding characters.
+
+# Example
+```julia
+julia> unescapehtml("Hello &lt;World&gt;!")
+"Hello <World>!"
+```
 """
 function unescapehtml(i::AbstractString)::AbstractString
     # Inspired from HTTP.jl escapehtml()
@@ -171,7 +210,26 @@ end
 """
     get_query(query_or_file::String)::String
 
-Decide if query is directly passed or from file.
+Determines if the input is a direct query string or a file path, and returns the query content.
+
+# Arguments
+- `query_or_file::String`: The Overpass query string or file path.
+
+# Returns
+- `String`: The query content as a string.
+
+# Notes
+- If the input ends with `.ql` or `.overpassql`, it is treated as a file path and the file's content is returned.
+- If the input is not a file path, it is returned as-is.
+
+# Example
+```julia
+julia> get_query("[out:json];node[amenity=school](50.6,7.0,50.8,7.3);out;")
+"[out:json];node[amenity=school](50.6,7.0,50.8,7.3);out;"
+
+julia> get_query("query.ql")
+"Contents of query.ql"
+```
 """
 function get_query(query_or_file::String)::String
     if endswith(query_or_file, r".ql|.overpassql"i)

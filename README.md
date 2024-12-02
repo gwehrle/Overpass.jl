@@ -89,7 +89,7 @@ Its very useful to build and debug your queries with Overpass Turbo.
 The query can be provided directly or as a path to a `.ql`/`.overpassql` file.
 
 ```julia
-Overpass.turbo_url("waterfountains.overpassql")
+Overpass.turbo_url("drinking_water.overpassql")
 # "https://overpass-turbo.eu/?Q=%5Bout%3Ajson%5D%3Bnode%5Bamenity%3Ddrinking_water…"
 ```
 
@@ -101,11 +101,30 @@ These [Overpass Turbo shortcuts](https://wiki.openstreetmap.org/wiki/Overpass_tu
 | ------------------------ | ----------------- |
 | {{bbox}}                 | supported         |
 | {{center}}               | supported         |
-| {{date:*string*}}        | support planned   |
+| {{date:*string*}}        | supported         |
 | {{geocodeId:*name*}}     | not yet supported |
 | {{geocodeArea:*name*}}   | not yet supported |
 | {{geocodeBbox:*name*}}   | not yet supported |
 | {{geocodeCoords:*name*}} | not yet supported |
+
+#### The `{{date}}` shortcut
+
+The `{{date}}` shortcut can represent:
+1. The current UTC date and time.
+2. A relative date calculated using offsets (e.g., 7 days ago, 1 month ago).
+
+When using the `{{date}}` shortcut in your query, it is replaced with a date string in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), ensuring compatibility with Overpass API queries.
+
+| Query Placeholder         | Meaning                             | Replacement Example         |
+|---------------------------|-------------------------------------|-----------------------------|
+| `{{date}}`                | Current date and time in UTC        | `2024-12-02T12:00:00Z`      |
+| `{{date:7 days}}`         | 7 days ago from now in UTC          | `2024-11-25T12:00:00Z`      |
+| `{{date:-1 month}}`       | 1 month into the future in UTC      | `2025-01-02T12:00:00Z`      |
+| `{{date:2 years}}`        | 2 years ago from now in UTC         | `2022-12-02T12:00:00Z`      |
+
+** ⚠️ Warning: The implementation of Overpass Turbo calculates the offset for the {{date}} shortcut in seconds, ignoring leap years and leap seconds. In contrast, Overpass.jl provides a calculation the actual calendar structure when replacing the placeholder. **
+
+See: [Overpass Turbo Available Shortcuts](https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts) for more details.
 
 ## Contributors
 
@@ -115,15 +134,13 @@ These [Overpass Turbo shortcuts](https://wiki.openstreetmap.org/wiki/Overpass_tu
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kaat0"><img src="https://avatars.githubusercontent.com/u/142348?v=4?s=100" width="100px;" alt="Martin Scheidt"/><br /><sub><b>Martin Scheidt</b></sub></a><br /><a href="#ideas-kaat0" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-kaat0" title="User Testing">📓</a> <a href="#code-kaat0" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gwehrle"><img src="https://avatars.githubusercontent.com/u/171450664?v=4?s=100" width="100px;" alt="Gregor Wehrle"/><br /><sub><b>Gregor Wehrle</b></sub></a><br /><a href="#ideas-gwehrle" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-gwehrle" title="User Testing">📓</a> <a href="#code-gwehrle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/kaat0"><img src="https://avatars.githubusercontent.com/u/142348?v=4?s=100" width="100px;" alt="Martin Scheidt"/><br /><sub><b>Martin Scheidt</b></sub></a><br /><a href="#ideas-kaat0" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-kaat0" title="User Testing">📓</a> <a href="#code-kaat0" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
-
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## See also
