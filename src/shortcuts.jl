@@ -1,7 +1,7 @@
 """
-    replace_shortcuts(
-        query::AbstractString, bbox::Bbox, center::Center
-    )::AbstractString
+	replace_shortcuts(
+		query::AbstractString, bbox::Bbox, center::Center
+	)::AbstractString
 
 Replaces predefined shortcuts (e.g., `{{bbox}}`, `{{center}}`, `{{date}}`) 
 in the given Overpass query string with their corresponding values.
@@ -20,9 +20,7 @@ in the given Overpass query string with their corresponding values.
 - The function checks for any unreplaced shortcuts and throws an error if found.
 """
 function replace_shortcuts(
-        query::AbstractString, bbox::Bbox, center::Center
-)::AbstractString
-
+        query::AbstractString, bbox::Bbox, center::Center)::AbstractString
     query = replace_bbox_shortcuts(query, bbox)
     query = replace_center_shortcuts(query, center)
     query = replace_date_shortcuts(query)
@@ -32,9 +30,9 @@ function replace_shortcuts(
 end
 
 """
-    replace_bbox_shortcuts(
-        query::AbstractString, bbox::Bbox
-    )::AbstractString
+	replace_bbox_shortcuts(
+		query::AbstractString, bbox::Bbox
+	)::AbstractString
 
 Replaces the `{{bbox}}` shortcut in the query with the provided bounding box.
 
@@ -49,9 +47,7 @@ Replaces the `{{bbox}}` shortcut in the query with the provided bounding box.
 # Notes
 - If `bbox` is `nothing`, the query is returned without modifications.
 """
-function replace_bbox_shortcuts(
-        query::AbstractString, bbox::Bbox)::AbstractString
-
+function replace_bbox_shortcuts(query::AbstractString, bbox::Bbox)::AbstractString
     if !isnothing(bbox)
         query = replace(query, r"\{\{\s*bbox\s*\}\}"i => join(bbox, ","))
         @debug "query after bbox replacement" query
@@ -61,9 +57,9 @@ function replace_bbox_shortcuts(
 end
 
 """
-    replace_center_shortcuts(
-        query::AbstractString, center::Center
-    )::AbstractString
+	replace_center_shortcuts(
+		query::AbstractString, center::Center
+	)::AbstractString
 
 Replaces the `{{center}}` shortcut in the query with the provided center point.
 
@@ -78,9 +74,7 @@ Replaces the `{{center}}` shortcut in the query with the provided center point.
 # Notes
 - If `center` is `nothing`, the query is returned without modifications.
 """
-function replace_center_shortcuts(
-        query::AbstractString, center::Center)::AbstractString
-
+function replace_center_shortcuts(query::AbstractString, center::Center)::AbstractString
     if !isnothing(center)
         query = replace(query, r"\{\{\s*center\s*\}\}"i => join(center, ","))
         @debug "query after center replacement" query
@@ -90,7 +84,7 @@ function replace_center_shortcuts(
 end
 
 """
-    replace_date_shortcuts(query::AbstractString)::AbstractString
+	replace_date_shortcuts(query::AbstractString)::AbstractString
 
 Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 
@@ -156,7 +150,7 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
 end
 
 """
-    check_remaining_shortcuts(query::AbstractString)::Nothing
+	check_remaining_shortcuts(query::AbstractString)::Nothing
 
 Checks for unreplaced Overpass shortcuts in the query and throws errors if found.
 
@@ -181,7 +175,7 @@ function check_remaining_shortcuts(query::AbstractString)::Nothing
         else
             throw(DomainError(
                 query, """Unsupported shortcut in query: \"""" * match.match * """\".
-Please consult the documentation for supported shortcuts"""))
+            Please consult the documentation for supported shortcuts"""))
         end
     end
 end

@@ -27,7 +27,7 @@ OVERPASS_TURBO_URL = "https://overpass-turbo.eu/"
 include("shortcuts.jl")
 
 """
-    query(query_or_file::String; bbox::Bbox=nothing, center::Center=nothing)::String
+	query(query_or_file::String; bbox::Bbox=nothing, center::Center=nothing)::String
 
 Sends a query to the Overpass API and retrieves the response as a string.
 
@@ -49,7 +49,7 @@ function query(
         query_or_file::String;
         bbox::Bbox = nothing,
         center::Center = nothing
-    )::String
+)::String
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "interpreter"
 
     query = get_query(query_or_file)
@@ -77,7 +77,7 @@ function query(
 end
 
 """
-    set_endpoint(endpoint::Union{Nothing, String}=nothing)::Bool
+	set_endpoint(endpoint::Union{Nothing, String}=nothing)::Bool
 
 Sets or resets the Overpass API endpoint for all queries.
 
@@ -110,7 +110,7 @@ function set_endpoint(endpoint::Union{Nothing, String} = nothing)::Bool
 end
 
 """
-    status()::Status
+	status()::Status
 
 Fetches and parses the current status of the Overpass API.
 
@@ -156,7 +156,7 @@ function status()::Status
 end
 
 """
-    turbo_url(query_or_file::String)::String
+	turbo_url(query_or_file::String)::String
 
 Generates an Overpass Turbo URL for a given query.
 
@@ -181,7 +181,7 @@ function turbo_url(query_or_file::String)::String
 end
 
 """
-    unescapehtml(i::AbstractString)::AbstractString
+	unescapehtml(i::AbstractString)::AbstractString
 
 Unescapes special HTML characters (`&`, `<`, `>`, `"`, `'`) in a string.
 
@@ -208,7 +208,7 @@ function unescapehtml(i::AbstractString)::AbstractString
 end
 
 """
-    get_query(query_or_file::String)::String
+	get_query(query_or_file::String)::String
 
 Determines if the input is a direct query string or a file path, and returns the query content.
 
