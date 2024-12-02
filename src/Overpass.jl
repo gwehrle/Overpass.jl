@@ -1,4 +1,5 @@
 module Overpass
+
 using Preferences
 using HTTP
 using URIs
@@ -22,6 +23,9 @@ end
 DEFAULT_ENDPOINT = "https://overpass-api.de/api/"
 OVERPASS_TURBO_URL = "https://overpass-turbo.eu/"
 
+# include package files
+include(shortcuts.jl)
+
 """
     query(query_or_file::String; <keyword arguments>)::String
 
@@ -39,13 +43,11 @@ function query(
         query_or_file::String;
         bbox::Bbox = nothing,
         center::Center = nothing
-)::String
+    )::String
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "interpreter"
 
     query = get_query(query_or_file)
     query = replace_shortcuts(query, bbox, center)
-    query = replace_date_shortcuts(query)
-    check_remaining_shortcuts(query)
 
     try
         # Start Overpass request
@@ -184,105 +186,6 @@ function get_query(query_or_file::String)::String
 
     @debug "Input is query."
     return query_or_file
-end
-
-"""
-    replace_shortcuts(query::AbstractString, bbox::Bbox, center::Center)::AbstractString
-
-Fill shortcuts with defined replacements in the query.
-"""
-function replace_shortcuts(
-        query::AbstractString, bbox::Bbox, center::Center)::AbstractString
-    # replace bbox shortcut
-    if !isnothing(bbox)
-        query = replace(query, r"\{\{\s*bbox\s*\}\}"i => join(bbox, ","))
-        @debug "query after bbox replacement" query
-    end
-
-    # replace center shortcut
-    if !isnothing(center)
-        query = replace(query, r"\{\{\s*center\s*\}\}"i => join(center, ","))
-        @debug "query after center replacement" query
-    end
-
-    return query
-end
-
-"""
-    replace_date_shortcuts(query::AbstractString)::AbstractString
-
-Fill date shortcuts with defined replacement pattern in the query.
-See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts
-"""
-function replace_date_shortcuts(query::AbstractString)::AbstractString
-    if occursin("{{date", query)
-        # Get the current date and time
-        current_date = now(tz"UTC")
-
-        # Define the regex pattern for placeholders
-        pattern = r"\{\{date(?::([0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\}\}"
-
-        # Map string units to Dates.Period constructors
-        period_map = Dict(
-            "year" => Year,
-            "month" => Month,
-            "day" => Day,
-            "week" => Week,
-            "hour" => Hour,
-            "minute" => Minute,
-            "second" => Second
-        )
-
-        for match in eachmatch(pattern, query)
-            # Extract captured groups
-            duration_value, duration_unit = match.captures
-            @debug "" match.captures
-
-            # Compute the replacement date
-            replacement_date = if duration_value !== nothing && duration_unit !== nothing
-                # Parse the duration and compute the past date
-                value = parse(Int, duration_value)
-                @debug "parsed duration value" value
-                period_constructor = get(period_map, duration_unit, nothing)
-                duration = period_constructor(value)  # Create the period object
-                @debug "" duration
-                current_date - duration
-            else
-                # Use current date if no duration is provided
-                current_date
-            end
-            # make replacement_date a String in the correct format and appand 'Z' for UTC
-            replacement_date = Dates.format(replacement_date, ISODateTimeFormat) * "Z"
-            @debug "replacement String" replacement_date
-
-            # Replace the match in the query string
-            query = replace(query, match.match => replacement_date)
-        end
-    end
-
-    @debug "query afer date replacement" query
-    return query
-end
-
-"""
-    check_remaining_shortcuts(query::AbstractString)::Nothing
-
-Check a query for unreplaced overpass turbo shortcuts and throws errors if unreplaced shortcuts are found.
-"""
-function check_remaining_shortcuts(query::AbstractString)::Nothing
-    for match in eachmatch(r"\{\{\s*(?<shortcut>\w+)\s*\}\}"i, query)
-        if match[:shortcut] == "bbox"
-            throw(MissingException("""{{bbox}} found in query, but no value specified.
-            Use keywordargument "bbox": Overpass.query(…, bbox = (48.22, 16.36, 48.22, 16.36))"""))
-        elseif match[:shortcut] == "center"
-            throw(MissingException("""{{center}} found in query, but no value specified.
-            Use keywordargument "center": Overpass.query(…, center = (48.22, 16.36))"""))
-        else
-            throw(DomainError(
-                query, """Unsupported shortcut in query: \"""" * match.match * """\".
-Please consult the documentation for supported shortcuts"""))
-        end
-    end
 end
 
 end
