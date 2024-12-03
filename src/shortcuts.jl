@@ -20,7 +20,7 @@ in the given Overpass query string with their corresponding values.
 - The function checks for any unreplaced shortcuts and throws an error if found.
 """
 function replace_shortcuts(
-        query::AbstractString, bbox::Bbox, center::Center)::AbstractString
+        query::AbstractString; bbox::Bbox = nothing, center::Center = nothing)::AbstractString
     query = replace_bbox_shortcuts(query, bbox)
     query = replace_center_shortcuts(query, center)
     query = replace_date_shortcuts(query)
@@ -100,12 +100,9 @@ Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 - See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts
 """
 function replace_date_shortcuts(query::AbstractString)::AbstractString
-    if occursin(r"\{\{\s*?date", query)
+    if occursin(r"(?i)\{\{\s*?date", query)
         # Get the current date and time
         current_date = now(tz"UTC")
-
-        # Define the regex pattern for placeholders
-        pattern = r"\{\{\s*?date\s*?(?::\s*?(-?\+?[0-9]+)\s*(year|month|day|week|hour|minute|second)s?)?\s*?\}\}"
 
         # Map string units to Dates.Period constructors
         period_map = Dict(
@@ -117,6 +114,13 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
             "minute" => Minute,
             "second" => Second
         )
+
+        # This regex matches a "date" placeholder in the format "{{date: <value> <unit>s}}" within double curly braces.
+        # - Case-insensitive (`(?i)`), matching variations like "{{DATE}}" or "{{Date}}".
+        # - Captures:
+        #   - `value`: An optional numeric value (e.g., "-3", "+1").
+        #   - `unit`: An optional time unit (e.g., "year", "month", "day"), optionally pluralized.
+        pattern = r"(?i)\{\{\s*date\s*(?::\s*(?<value>-?\+?[0-9]+)\s*(?<unit>year|month|day|week|hour|minute|second)s?)?\s*\}\}"
 
         for match in eachmatch(pattern, query)
             # Extract captured groups
@@ -165,13 +169,26 @@ Checks for unreplaced Overpass shortcuts in the query and throws errors if found
 - `DomainError`: Thrown if an unsupported shortcut is found.
 """
 function check_remaining_shortcuts(query::AbstractString)::Nothing
-    for match in eachmatch(r"\{\{\s*(?<shortcut>\w+)\s*\}\}"i, query)
+
+    # This regex matches placeholders in double curly braces ({{...}}), with special handling for "date":
+    # - Case-insensitive (`(?i)`), supporting variations like "{{DATE}}" or "{{Date:+1day}}".
+    # - Captures:
+    #   - Group 1: Entire placeholder.
+    #   - Group 2: The "date" keyword (if present).
+    #   - Group 3: The content after "date" (e.g., "3 days"), excluding colons and spaces.
+    #   - Group 4: Other placeholders (e.g., "bbox", "center").
+    pattern = r"(?i)\{\{\s*((date)\s*[:+]{1,2}\s*([^:{}\s][^{}]*?)|(.+?))\s*\}\}"
+
+    for match in eachmatch(pattern, query)
         if match[:shortcut] == "bbox"
             throw(MissingException("""{{bbox}} found in query, but no value specified.
             Use keywordargument "bbox": Overpass.query(…, bbox = (48.22, 16.36, 48.22, 16.36))"""))
         elseif match[:shortcut] == "center"
             throw(MissingException("""{{center}} found in query, but no value specified.
             Use keywordargument "center": Overpass.query(…, center = (48.22, 16.36))"""))
+        elseif match[:shortcut] == "date"
+            println("date shortcut misspelled")
+            println(match)
         else
             throw(DomainError(
                 query, """Unsupported shortcut in query: \"""" * match.match * """\".

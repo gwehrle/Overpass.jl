@@ -134,7 +134,7 @@ configure!(;
         end
     end
 
-    @testset "replace_shortcuts" begin
+    @testset "replace bbox and center shortcuts" begin
         @test Overpass.replace_shortcuts("abc", nothing, nothing) == "abc"
 
         @test Overpass.replace_shortcuts("abc", (48.0, 16.0, 49.0, 17.0), (5, 6)) == "abc"
@@ -148,6 +148,48 @@ configure!(;
         @test Overpass.replace_shortcuts(
             "Lorem {{ bbox \n}} {{\ncenter \n\n      }} ipsum", (1, 2, 3, 4), (5, 6)) ==
               "Lorem 1,2,3,4 5,6 ipsum"
+    end
+
+    @testset "date shortcut replacements" begin
+        @test DateTime(strip(Overpass.replace_shortcuts("{{ date }}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12years}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1year}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12months}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1month}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{ date : -3 months }}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12days}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1day}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12weeks}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1week}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12hours}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1hour}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12minutes}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1minute}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:12seconds}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+        @test DateTime(strip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
+            ISODateTimeFormat) isa Dates.DateTime
+
+        #misspelled: Overpass.replace_shortcuts({{date:2hourss}})
+        #multiple date shortcuts
+        #multiple shortcuts: date and others
+        #files
     end
 
     @testset "check_remaining_shortcuts" begin
