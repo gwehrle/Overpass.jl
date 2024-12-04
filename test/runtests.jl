@@ -242,17 +242,17 @@ configure!(;
                 ISODateTimeFormat) == DateTime(2024, 09, 08)
             @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1week}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 12, 08)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{date:+12hours}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:+12hours}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 11, 30, 12)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1hour}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1hour}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 12, 1, 1)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{DATE:12MINUTES}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{DATE:12MINUTES}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 11, 30, 23, 48)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1minute}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1minute}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 12, 01, 0, 1)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{date:12seconds}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12seconds}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 11, 30, 23, 59, 48)
-            @info DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
+            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
                 ISODateTimeFormat) == DateTime(2024, 12, 01, 0, 0, 1)
         end
 
