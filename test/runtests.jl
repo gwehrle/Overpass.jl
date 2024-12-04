@@ -4,6 +4,10 @@ using BrokenRecord: configure!, playback
 using HTTP
 using Preferences
 using Dates
+using Mocking
+
+Mocking.activate()
+fixed_date = @patch now(::Any) = DateTime(2024, 12, 1)
 
 configure!(;
     path = string(@__DIR__, "/HTTP/"), extension = "bson", ignore_headers = ["User-Agent"])
@@ -41,25 +45,31 @@ configure!(;
                     48.22702986850222, 16.364722959721423)),
             "op-query-longquery") != ""
 
-        # @test playback(
-        #     () -> Overpass.query(
-        #         string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
-        #             48.224410300027, 16.36058699342046,
-        #             48.22702986850222, 16.364722959721423)),
-        #     "op-query-date") != ""
+        apply(fixed_date) do
+            @test playback(
+                () -> Overpass.query(
+                    string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
+                        48.224410300027, 16.36058699342046,
+                        48.22702986850222, 16.364722959721423)),
+                "op-query-date-bbox") != ""
+        end
 
-        # @test playback(
-        #     () -> Overpass.query(
-        #         string(@__DIR__, "/queries/shortcut_date.overpassql")),
-        #     "op-query-date") != ""
+        apply(fixed_date) do
+            @test playback(
+                () -> Overpass.query(
+                    string(@__DIR__, "/queries/shortcut_date.overpassql")),
+                "op-query-date") != ""
+        end
 
-        # @test playback(
-        #     () -> Overpass.query(
-        #         string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
-        #     "op-query-date") != ""
+        apply(fixed_date) do
+            @test playback(
+                () -> Overpass.query(
+                    string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
+                "op-query-different-dates") != ""
+        end
 
-        # @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
-        #     "error")
+        @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
+            "error")
     end
 
     @testset "set_endpoint" begin

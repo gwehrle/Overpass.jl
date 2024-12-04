@@ -102,7 +102,8 @@ Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 function replace_date_shortcuts(query::AbstractString)::AbstractString
     if occursin(r"(?i)\{\{\s*?date", query)
         # Get the current date and time
-        current_date = now(tz"UTC")
+        # @mock to fixate date in tests. Has no effect here.
+        current_date = @mock now(tz"UTC")
 
         # Map string units to Dates.Period constructors
         period_map = Dict(

@@ -5,6 +5,7 @@ using HTTP
 using URIs
 using Dates
 using TimeZones
+using Mocking
 
 export query, set_endpoint, status, turbo_url
 
@@ -88,7 +89,7 @@ end
 Sets or resets the Overpass API endpoint for all queries.
 
 # Arguments
-- `endpoint::Union{Nothing, String}`: The Overpass API endpoint URL. 
+- `endpoint::Union{Nothing, String}`: The Overpass API endpoint URL.
   Must end with a trailing slash. If set to `nothing`, the default endpoint is restored.
 
 # Returns
