@@ -100,7 +100,7 @@ Replaces `{{date}}` shortcuts in the query with the current or calculated date.
 - See: https://wiki.openstreetmap.org/wiki/Overpass_turbo/Extended_Overpass_Turbo_Queries#Available_Shortcuts
 """
 function replace_date_shortcuts(query::AbstractString)::AbstractString
-    if occursin(r"(?i)\{\{\s*?date", query)
+    if occursin(r"\{\{\s*?date"i, query)
         # Get the current date and time
         # @mock to fixate date in tests. Has no effect here.
         current_date = @mock now(tz"UTC")
@@ -117,11 +117,11 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
         )
 
         # This regex matches a "date" placeholder in the format "{{date: <value> <unit>s}}" within double curly braces.
-        # - Case-insensitive (`(?i)`), matching variations like "{{DATE}}" or "{{Date}}".
         # - Captures:
         #   - `value`: An optional numeric value (e.g., "-3", "+1").
         #   - `unit`: An optional time unit (e.g., "year", "month", "day"), optionally pluralized.
-        pattern = r"(?i)\{\{\s*date\s*(?::\s*(?<value>-?\+?[0-9]+)\s*(?<unit>year|month|day|week|hour|minute|second)s?)?\s*\}\}"
+        # - Flags: i - matching variations like "{{DATE}}" or "{{Date}}".
+        pattern = r"\{\{\s*date\s*(?::\s*(?<value>-?\+?[0-9]+)\s*(?<unit>year|month|day|week|hour|minute|second)s?)?\s*\}\}"i
 
         for match in eachmatch(pattern, query)
             # Extract captured groups
@@ -172,13 +172,13 @@ Checks for unreplaced Overpass shortcuts in the query and throws errors if found
 function check_remaining_shortcuts(query::AbstractString)::Nothing
 
     # This regex matches placeholders in double curly braces ({{...}}) with special handling for "date":
-    # - Case-insensitive (`(?i)`).
     # - Captures:
     #   - `all`: The entire placeholder content.
     #   - `is_date`: Matches "date" keyword if present.
     #   - `date_value`: The value after "date" (e.g., "misspelled", excluding colons).
     #   - `other`: Any other placeholder content (e.g., "bbox", "center").
-    pattern = r"(?i)\{\{\s*(?<all>(?<is_date>date)\s*[:+]{1,2}\s*(?<date_value>[^:{}\s][^{}]*?)|(?<other>.+?))\s*\}\}"
+    # - Flags: i - Case insensitive
+    pattern = r"\{\{\s*(?<all>(?<is_date>date)\s*[:+]{1,2}\s*(?<date_value>[^:{}\s][^{}]*?)|(?<other>.+?))\s*\}\}"i
 
     for match in eachmatch(pattern, query)
         if match[:other] == "bbox"

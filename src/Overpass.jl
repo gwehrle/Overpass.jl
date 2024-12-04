@@ -68,10 +68,10 @@ function query(
             str = String(error.response.body)
 
             # This regex matches an HTML error message wrapped in a `<p>` tag with a `<strong>` element:
-            # - Case-insensitive (`i`).
             # - Captures:
             #   - `msg`: The error message text following `<strong>Error</strong>:` within the paragraph.
-            pattern = r"(?i)<p><strong style=\"color:#FF0000\">Error<\/strong>:(?<msg>.+)<\/p>"
+            # - Flags: i - Case insensitive
+            pattern = r"<p><strong style=\"color:#FF0000\">Error<\/strong>:(?<msg>.+)<\/p>"i
 
             errormessages = join(
                 collect(unescapehtml(match[:msg]) for match in eachmatch(pattern, str)),
@@ -141,19 +141,19 @@ function status()::Status
     @debug "Status response" response
 
     # This regex extracts Overpass API status details from a formatted response:
-    # - Case-insensitive (`(?i)`).
     # - Captures:
     #   - `connection_id`: Connection ID as digits.
     #   - `server_time`: Current server time.
     #   - `endpoint`: (Optional) Announced endpoint URL.
     #   - `rate_limit`: API rate limit as digits.
     #   - `avalible_slots`: (Optional) Available slots as digits.
+    # - Flags: i - Case insensitive
     # - Matches structured responses with fields like "Connected as: <id>", "Current time: <time>", etc.
-    pattern = r"(?i)Connected\sas:\s(?<connection_id>\d+)\n" *
-              r"Current\stime:\s(?<server_time>[^\n]+)\n" *
-              r"(?:Announced\sendpoint:\s(?<endpoint>[^\n]+)\n)?" *
-              r"Rate\slimit:\s(?<rate_limit>\d+)\n" *
-              r"(?:(?<avalible_slots>\d+)\sslots\savailable\snow.)?"
+    pattern = r"Connected\sas:\s(?<connection_id>\d+)\n"i *
+              r"Current\stime:\s(?<server_time>[^\n]+)\n"i *
+              r"(?:Announced\sendpoint:\s(?<endpoint>[^\n]+)\n)?"i *
+              r"Rate\slimit:\s(?<rate_limit>\d+)\n"i *
+              r"(?:(?<avalible_slots>\d+)\sslots\savailable\snow.)?"i
 
     matches = match(pattern, String(response.body))
 
