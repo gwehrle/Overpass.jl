@@ -132,7 +132,7 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
                 # Parse the duration and compute the past date
                 value = parse(Int, duration_value)
                 @debug "parsed duration value" value
-                period_constructor = get(period_map, duration_unit, nothing)
+                period_constructor = get(period_map, lowercase(duration_unit), nothing)
                 duration = period_constructor(value)  # Create the period object
                 @debug "" duration
                 current_date - duration
@@ -170,28 +170,31 @@ Checks for unreplaced Overpass shortcuts in the query and throws errors if found
 """
 function check_remaining_shortcuts(query::AbstractString)::Nothing
 
-    # This regex matches placeholders in double curly braces ({{...}}), with special handling for "date":
-    # - (`(?is)`): case-insensitive (`i`) and dot matches all characters including new line (`s`)
-    #   supporting variations like "{{DATE}}" or "{{Date:+1day}}".
+    # This regex matches placeholders in double curly braces ({{...}}) with special handling for "date":
+    # - Case-insensitive (`(?i)`).
     # - Captures:
-    #   - `shortcut`: whole shortcut without brackets
-    pattern = r"(?is)\{\{\s*(?<shortcut>.+?)\s*\}\}"
+    #   - `all`: The entire placeholder content.
+    #   - `is_date`: Matches "date" keyword if present.
+    #   - `date_value`: The value after "date" (e.g., "misspelled", excluding colons).
+    #   - `other`: Any other placeholder content (e.g., "bbox", "center").
+    pattern = r"(?i)\{\{\s*(?<all>(?<is_date>date)\s*[:+]{1,2}\s*(?<date_value>[^:{}\s][^{}]*?)|(?<other>.+?))\s*\}\}"
 
     for match in eachmatch(pattern, query)
-        if match[:shortcut] == "bbox"
+        if match[:other] == "bbox"
             throw(MissingException("""{{bbox}} found in query, but no value specified.
-            Use keywordargument "bbox": Overpass.query(…, bbox = (48.22, 16.36, 48.22, 16.36))"""))
-        elseif match[:shortcut] == "center"
+            Use keyword argument "bbox": Overpass.query(…, bbox = (48.22, 16.36, 48.22, 16.36))."""))
+        elseif match[:other] == "center"
             throw(MissingException("""{{center}} found in query, but no value specified.
-            Use keywordargument "center": Overpass.query(…, center = (48.22, 16.36))"""))
-        elseif occursin("date", match[:shortcut])
-            throw(DomainError(query,
-                """Unsupported date shortcut {{""" * match[:shortcut] *
-                """}}. Check spelling or file an bug report if you think this should work."""))
+            Use keyword argument "center": Overpass.query(…, center = (48.22, 16.36))."""))
+        elseif !isnothing(match[:is_date])
+            throw(DomainError(
+                query, """Did not recognize time unit for date shortcut: \"""" *
+                       match[:date_value] * """\".
+Please consult the documentation for supported time units."""))
         else
             throw(DomainError(
                 query, """Unsupported shortcut in query: \"""" * match.match * """\".
-            Please consult the documentation for supported shortcuts"""))
+            Please consult the documentation for supported shortcuts."""))
         end
     end
 end
