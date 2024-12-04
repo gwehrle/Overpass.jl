@@ -20,7 +20,7 @@ in the given Overpass query string with their corresponding values.
 - The function checks for any unreplaced shortcuts and throws an error if found.
 """
 function replace_shortcuts(
-        query::AbstractString; bbox::Bbox = nothing, center::Center = nothing)::AbstractString
+        query::AbstractString, bbox::Bbox = nothing, center::Center = nothing)::AbstractString
     query = replace_bbox_shortcuts(query, bbox)
     query = replace_center_shortcuts(query, center)
     query = replace_date_shortcuts(query)
