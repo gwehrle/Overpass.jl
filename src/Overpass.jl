@@ -42,7 +42,7 @@ The query can be provided directly or by specifying the path to a `.ql` or `.ove
 - `String`: The response from the Overpass API.
 
 # Notes
-- To change the Overpass API endpoint, use the `set_endpoint` function.
+- To change the Overpass API endpoint, use the  [`set_endpoint`](@ref) function.
 - Throws a `DomainError` if the query is invalid or the Overpass API returns an error.
 """
 function query(
@@ -129,7 +129,7 @@ Fetches and parses the current status of the Overpass API.
   - `avalible_slots::Union{Nothing, Int}`: The number of available slots for requests, or `nothing` if unavailable.
 
 # Notes
-- Use `set_endpoint` to modify the API endpoint before calling this function.
+- Use [`set_endpoint`](@ref) to modify the API endpoint before calling this function.
 - Throws an error if the API status response cannot be parsed.
 """
 function status()::Status
