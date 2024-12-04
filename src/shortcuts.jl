@@ -3,14 +3,14 @@
 		query::AbstractString, bbox::Bbox, center::Center
 	)::AbstractString
 
-Replaces predefined shortcuts (e.g., `{{bbox}}`, `{{center}}`, `{{date}}`) 
+Replaces predefined shortcuts (e.g., `{{bbox}}`, `{{center}}`, `{{date}}`)
 in the given Overpass query string with their corresponding values.
 
 # Arguments
 - `query::AbstractString`: The Overpass query string containing shortcuts.
-- `bbox::Bbox`: A bounding box tuple `(min_lat, min_lon, max_lat, max_lon)` 
+- `bbox::Bbox`: A bounding box tuple `(min_lat, min_lon, max_lat, max_lon)`
   to replace `{{bbox}}` in the query. Pass `nothing` to skip replacement.
-- `center::Center`: A center point tuple `(lat, lon)` to replace `{{center}}` 
+- `center::Center`: A center point tuple `(lat, lon)` to replace `{{center}}`
   in the query. Pass `nothing` to skip replacement.
 
 # Returns
@@ -41,7 +41,7 @@ Replaces the `{{bbox}}` shortcut in the query with the provided bounding box.
 - `bbox::Bbox`: A bounding box tuple `(min_lat, min_lon, max_lat, max_lon)`.
 
 # Returns
-- `AbstractString`: The query with `{{bbox}}` replaced by the bounding box, 
+- `AbstractString`: The query with `{{bbox}}` replaced by the bounding box,
   or unchanged if `bbox` is `nothing`.
 
 # Notes
@@ -68,7 +68,7 @@ Replaces the `{{center}}` shortcut in the query with the provided center point.
 - `center::Center`: A center point tuple `(lat, lon)`.
 
 # Returns
-- `AbstractString`: The query with `{{center}}` replaced by the center point, 
+- `AbstractString`: The query with `{{center}}` replaced by the center point,
   or unchanged if `center` is `nothing`.
 
 # Notes
@@ -171,13 +171,11 @@ Checks for unreplaced Overpass shortcuts in the query and throws errors if found
 function check_remaining_shortcuts(query::AbstractString)::Nothing
 
     # This regex matches placeholders in double curly braces ({{...}}), with special handling for "date":
-    # - Case-insensitive (`(?i)`), supporting variations like "{{DATE}}" or "{{Date:+1day}}".
+    # - (`(?is)`): case-insensitive (`i`) and dot matches all characters including new line (`s`)
+    #   supporting variations like "{{DATE}}" or "{{Date:+1day}}".
     # - Captures:
-    #   - Group 1: Entire placeholder.
-    #   - Group 2: The "date" keyword (if present).
-    #   - Group 3: The content after "date" (e.g., "3 days"), excluding colons and spaces.
-    #   - Group 4: Other placeholders (e.g., "bbox", "center").
-    pattern = r"(?i)\{\{\s*((date)\s*[:+]{1,2}\s*([^:{}\s][^{}]*?)|(.+?))\s*\}\}"
+    #   - `shortcut`: whole shortcut without brackets
+    pattern = r"(?is)\{\{\s*(?<shortcut>.+?)\s*\}\}"
 
     for match in eachmatch(pattern, query)
         if match[:shortcut] == "bbox"
@@ -186,9 +184,10 @@ function check_remaining_shortcuts(query::AbstractString)::Nothing
         elseif match[:shortcut] == "center"
             throw(MissingException("""{{center}} found in query, but no value specified.
             Use keywordargument "center": Overpass.query(…, center = (48.22, 16.36))"""))
-        elseif match[:shortcut] == "date"
-            println("date shortcut misspelled")
-            println(match)
+        elseif occursin("date", match[:shortcut])
+            throw(DomainError(query,
+                """Unsupported date shortcut {{""" * match[:shortcut] *
+                """}}. Check spelling or file an bug report if you think this should work."""))
         else
             throw(DomainError(
                 query, """Unsupported shortcut in query: \"""" * match.match * """\".

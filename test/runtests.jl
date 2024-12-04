@@ -196,6 +196,7 @@ configure!(;
         @test_throws MissingException Overpass.check_remaining_shortcuts("{{bbox}}")
         @test_throws MissingException Overpass.check_remaining_shortcuts("{{center}}")
         @test_throws DomainError Overpass.check_remaining_shortcuts("{{ custom }}")
+        @test_throws DomainError Overpass.check_remaining_shortcuts("{{date: 1decade}}")
     end
 end
 
