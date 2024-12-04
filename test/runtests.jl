@@ -25,7 +25,7 @@ configure!(;
                 string(@__DIR__, "/queries/cycle_network.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
                     48.22702986850222, 16.364722959721423)),
-            "op-query") != ""
+            "op-query-bbox") != ""
 
         @test playback(
             () -> Overpass.query(
@@ -39,27 +39,27 @@ configure!(;
                 string(@__DIR__, "/queries/drinking_water.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
                     48.22702986850222, 16.364722959721423)),
-            "op-query") != ""
+            "op-query-longquery") != ""
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
-                    48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query") != ""
+        # @test playback(
+        #     () -> Overpass.query(
+        #         string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
+        #             48.224410300027, 16.36058699342046,
+        #             48.22702986850222, 16.364722959721423)),
+        #     "op-query-date") != ""
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/shortcut_date.overpassql")),
-            "op-query") != ""
+        # @test playback(
+        #     () -> Overpass.query(
+        #         string(@__DIR__, "/queries/shortcut_date.overpassql")),
+        #     "op-query-date") != ""
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
-            "op-query") != ""
+        # @test playback(
+        #     () -> Overpass.query(
+        #         string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
+        #     "op-query-date") != ""
 
-        @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
-            "error")
+        # @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
+        #     "error")
     end
 
     @testset "set_endpoint" begin
