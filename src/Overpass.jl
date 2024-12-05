@@ -4,7 +4,6 @@ using Preferences
 using HTTP
 using URIs
 using Dates
-using Mocking
 
 export query, set_endpoint, status, turbo_url
 

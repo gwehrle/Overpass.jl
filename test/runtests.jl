@@ -4,13 +4,16 @@ using BrokenRecord: configure!, playback
 using HTTP
 using Preferences
 using Dates
-using Mocking
 
-Mocking.activate()
-fixed_date = @patch now(::Any) = DateTime(2024, 12, 1)
-
+# Configure BrokenRecord
 configure!(;
-    path = string(@__DIR__, "/HTTP/"), extension = "bson", ignore_headers = ["User-Agent"])
+    path = string(@__DIR__, "/HTTP/"),
+    extension = "bson",
+    ignore_headers = ["User-Agent"]
+)
+
+# Fixate now to fix date
+Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
 @testset "Overpass.jl" begin
     @testset "query" begin
@@ -45,28 +48,22 @@ configure!(;
                     48.22702986850222, 16.364722959721423)),
             "op-query-longquery") != ""
 
-        apply(fixed_date) do
-            @test playback(
-                () -> Overpass.query(
-                    string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
-                        48.224410300027, 16.36058699342046,
-                        48.22702986850222, 16.364722959721423)),
-                "op-query-date-bbox") != ""
-        end
+        @test playback(
+            () -> Overpass.query(
+                string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
+                    48.224410300027, 16.36058699342046,
+                    48.22702986850222, 16.364722959721423)),
+            "op-query-date-bbox") != ""
 
-        apply(fixed_date) do
-            @test playback(
-                () -> Overpass.query(
-                    string(@__DIR__, "/queries/shortcut_date.overpassql")),
-                "op-query-date") != ""
-        end
+        @test playback(
+            () -> Overpass.query(
+                string(@__DIR__, "/queries/shortcut_date.overpassql")),
+            "op-query-date") != ""
 
-        apply(fixed_date) do
-            @test playback(
-                () -> Overpass.query(
-                    string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
-                "op-query-different-dates") != ""
-        end
+        @test playback(
+            () -> Overpass.query(
+                string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
+            "op-query-different-dates") != ""
 
         @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
             "error")
@@ -217,51 +214,48 @@ configure!(;
     end
 
     @testset "date shortcut replacements" begin
-        apply(fixed_date) do
-            @test Overpass.replace_date_shortcuts("abc") == "abc"
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{ date }}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12years}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2012, 12, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1year}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2025, 12, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12months}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2023, 12, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1month}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2025, 01, 1)
-            @test DateTime(
-                rstrip(Overpass.replace_shortcuts("{{ date : -3 months }}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2025, 03, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:122 days}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 08, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1day}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 2)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12weeks}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 09, 08)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1week}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 08)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:+12hours}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 11, 30, 12)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1hour}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 1, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{DATE:12MINUTES}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 11, 30, 23, 48)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1minute}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 01, 0, 1)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12seconds}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 11, 30, 23, 59, 48)
-            @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
-                ISODateTimeFormat) == DateTime(2024, 12, 01, 0, 0, 1)
-        end
-
-        #multiple date shortcuts
-        multiple_date_shortcuts = DateTime.(rstrip.(
-            split(Overpass.replace_shortcuts("{{date:-10second}}#{{date:+10second}}"), "#"),
-            'Z'))
-        @test multiple_date_shortcuts[1] - multiple_date_shortcuts[2] == Millisecond(20000)
+        @test Overpass.replace_date_shortcuts("abc") == "abc"
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{ date }}"), 'Z'),
+            ISODateTimeFormat) == now(UTC)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12years}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Year(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1year}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Year(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12months}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Month(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1month}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Month(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{ date : -3 months }}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Month(3)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:122 days}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Day(122)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1day}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Day(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12weeks}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Week(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1week}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Week(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:+12hours}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Hour(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1hour}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Hour(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{DATE:12MINUTES}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Minute(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1minute}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Minute(1)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:12seconds}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) - Second(12)
+        @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
+            ISODateTimeFormat) == now(UTC) + Second(1)
     end
+
+    #multiple date shortcuts
+    multiple_date_shortcuts = DateTime.(rstrip.(
+        split(Overpass.replace_shortcuts("{{date:-10second}}#{{date:+10second}}"), "#"),
+        'Z'))
+    @test multiple_date_shortcuts[1] - multiple_date_shortcuts[2] == Millisecond(20000)
 
     @testset "check_remaining_shortcuts" begin
         @test_throws MissingException Overpass.replace_shortcuts("{{bbox}}")
