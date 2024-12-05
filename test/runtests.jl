@@ -257,6 +257,13 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
         'Z'))
     @test multiple_date_shortcuts[1] - multiple_date_shortcuts[2] == Millisecond(20000)
 
+    @testset "remove style shortcuts" begin
+        @test Overpass.remove_style_shortcuts("abc") == "abc"
+        @test Overpass.remove_style_shortcuts("{{style:}}") == ""
+        @test Overpass.remove_style_shortcuts("{{ style:\nnode, way, relation {\ntext: name;\n}\n}}") ==
+              ""
+    end
+
     @testset "check_remaining_shortcuts" begin
         @test_throws MissingException Overpass.replace_shortcuts("{{bbox}}")
         @test_throws MissingException Overpass.replace_shortcuts("{{center}}")

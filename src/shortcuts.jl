@@ -24,6 +24,7 @@ function replace_shortcuts(
     query = replace_bbox_shortcuts(query, bbox)
     query = replace_center_shortcuts(query, center)
     query = replace_date_shortcuts(query)
+    query = remove_style_shortcuts(query)
     check_remaining_shortcuts(query)
 
     return query
@@ -151,6 +152,21 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
 
     @debug "query afer date replacement" query
     return query
+end
+
+"""
+	remove_style_shortcuts(query::AbstractString)::AbstractString
+
+Removes `{{style:}}` shortcuts in the query.
+
+# Arguments
+- `query::AbstractString`: The Overpass query string containing `{{style}}` shortcuts.
+
+# Returns
+- `AbstractString`: The query with `{{style}}` shortcuts removed.
+"""
+function remove_style_shortcuts(query::AbstractString)::AbstractString
+    return replace(query, r"\{\{\s*style:.*?\}\}"is => "")
 end
 
 """
