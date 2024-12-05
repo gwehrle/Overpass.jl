@@ -2,8 +2,8 @@
 
 [![Build Status](https://github.com/gwehrle/Overpass.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/gwehrle/Overpass.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
-[![All Contributors](https://img.shields.io/github/all-contributors/gwehrle/Overpass.jl?color=ee8449&style=flat-square)](#contributors)
+[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&labelColor=389826)](https://github.com/SciML/SciMLStyle)
+[![All Contributors](https://img.shields.io/github/all-contributors/gwehrle/Overpass.jl?color=ee8449)](#contributors)
 [![Aqua QA](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
 
 Julia wrapper for the OpenStreetMap [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API).
