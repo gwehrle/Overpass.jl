@@ -2,7 +2,7 @@
 
 julia_version = "1.11.1"
 manifest_format = "2.0"
-project_hash = "6fc63005bc4ee24c01f5dc27a601f5bdc6c5c3b3"
+project_hash = "43c9f48a0e7dd1eb7a52d603b2470fd57886195d"
 
 [[deps.Aqua]]
 deps = ["Compat", "Pkg", "Test"]
@@ -67,6 +67,11 @@ version = "2.4.2"
 deps = ["Printf"]
 uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
 version = "1.11.0"
+
+[[deps.DeepDiffs]]
+git-tree-sha1 = "9824894295b62a6a4ab6adf1c7bf337b3a9ca34c"
+uuid = "ab62b9b5-e342-54a8-a765-a90f495de1a6"
+version = "1.2.0"
 
 [[deps.Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
@@ -324,6 +329,12 @@ version = "1.10.0"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 version = "1.11.0"
+
+[[deps.TestSetExtensions]]
+deps = ["DeepDiffs", "Distributed", "Test"]
+git-tree-sha1 = "ccebd99935be339d2ad907589708ba1f0d62bab3"
+uuid = "98d24dd4-01ad-11ea-1b02-c9a08f80db04"
+version = "3.0.0"
 
 [[deps.TranscodingStreams]]
 git-tree-sha1 = "0c45878dcfdcfa8480052b6ab162cdd138781742"

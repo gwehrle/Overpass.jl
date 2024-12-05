@@ -1,5 +1,7 @@
-using Overpass
 using Test
+using TestSetExtensions
+
+using Overpass
 using BrokenRecord: configure!, playback
 using HTTP
 using Preferences
@@ -15,7 +17,7 @@ configure!(;
 # Fixate now to fix date
 Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
-@testset "Overpass.jl" begin
+@testset ExtendedTestSet "Overpass.jl" begin
     @testset "query" begin
         @test playback(
             () -> Overpass.query("[out:json];node[amenity=drinking_water](48.224410300027,16.36058699342046,48.22702986850222,16.364722959721423);out;"),
@@ -249,13 +251,13 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
             ISODateTimeFormat) == now(UTC) - Second(12)
         @test DateTime(rstrip(Overpass.replace_shortcuts("{{date:-1second}}"), 'Z'),
             ISODateTimeFormat) == now(UTC) + Second(1)
-    end
 
-    #multiple date shortcuts
-    multiple_date_shortcuts = DateTime.(rstrip.(
-        split(Overpass.replace_shortcuts("{{date:-10second}}#{{date:+10second}}"), "#"),
-        'Z'))
-    @test multiple_date_shortcuts[1] - multiple_date_shortcuts[2] == Millisecond(20000)
+        #multiple date shortcuts
+        multiple_date_shortcuts = DateTime.(rstrip.(
+            split(Overpass.replace_shortcuts("{{date:-10second}}#{{date:+10second}}"), "#"),
+            'Z'))
+        @test multiple_date_shortcuts[1] - multiple_date_shortcuts[2] == Millisecond(20000)
+    end
 
     @testset "remove style shortcuts" begin
         @test Overpass.remove_style_shortcuts("abc") == "abc"
@@ -271,6 +273,6 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
         @test_throws DomainError Overpass.replace_shortcuts("{{date:2hourss}}")
         @test_throws DomainError Overpass.replace_shortcuts("{{date: 1decade}}")
     end
-end
 
-include("Aqua.jl")
+    include("Aqua.jl")
+end
