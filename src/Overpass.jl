@@ -2,7 +2,6 @@ module Overpass
 
 using Preferences
 using HTTP
-using URIs
 using Dates
 
 export query, set_endpoint, status, turbo_url
@@ -191,7 +190,7 @@ julia> turbo_url("[out:json];node[amenity=school](50.6,7.0,50.8,7.3);out;")
 function turbo_url(query_or_file::String)::String
     query = get_query(query_or_file)
 
-    return OVERPASS_TURBO_URL * "?Q=" * escapeuri(query)
+    return OVERPASS_TURBO_URL * "?Q=" * HTTP.URIs.escapeuri(query)
 end
 
 """
