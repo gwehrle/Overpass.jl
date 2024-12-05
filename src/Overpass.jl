@@ -4,7 +4,6 @@ using Preferences
 using HTTP
 using URIs
 using Dates
-using TimeZones
 using Mocking
 
 export query, set_endpoint, status, turbo_url
@@ -161,7 +160,7 @@ function status()::Status
 
     status = Status(
         matches[:connection_id],
-        DateTime(matches[:server_time], dateformat"yyyy-mm-ddTHH:MM:SSz"),
+        DateTime(matches[:server_time], dateformat"yyyy-mm-ddTHH:MM:SSZ"),
         matches[:endpoint],
         parse(Int, matches[:rate_limit]),
         isnothing(matches[:avalible_slots]) ? nothing :

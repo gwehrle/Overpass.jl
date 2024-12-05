@@ -103,7 +103,7 @@ function replace_date_shortcuts(query::AbstractString)::AbstractString
     if occursin(r"\{\{\s*?date"i, query)
         # Get the current date and time
         # @mock to fixate date in tests. Has no effect here.
-        current_date = @mock now(tz"UTC")
+        current_date = @mock now(UTC)
 
         # Map string units to Dates.Period constructors
         period_map = Dict(
