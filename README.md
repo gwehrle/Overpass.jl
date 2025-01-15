@@ -1,5 +1,8 @@
 # Overpass.jl
 
+<!--[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://gwehrle.github.io/Overpass.jl/stable)-->
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://gwehrle.github.io/Overpass.jl/dev)
+
 [![Build Status](https://github.com/gwehrle/Overpass.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/gwehrle/Overpass.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2)](https://github.com/SciML/SciMLStyle)
@@ -32,12 +35,15 @@ Overpass.query(
 "{\n  \"version\": 0.6,\n  \"generator\": \"Overpass API 0.7.62.4 …"
 ```
 
+> [!TIP]
+> For more, see the [documentation](https://gwehrle.github.io/Overpass.jl/).
+
 ## See also
 | Package           |                                                      |
 | ----------------- | ---------------------------------------------------- |
 | LightOSM.jl       | Download, save and analyze networks via Overpass API |
 | OpenStreetMapX.jl | Analyze OSM roads from .osm or .pbf files            |
-| OSMToolset.jl     | Read and analyze OSM XML files              |
+| OSMToolset.jl     | Read and analyze OSM XML files                       |
 
 ## Contributors
 
