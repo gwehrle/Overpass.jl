@@ -1,4 +1,4 @@
-push!(LOAD_PATH,"../src/")
+push!(LOAD_PATH, "../src/")
 
 using Documenter
 using Overpass
@@ -8,8 +8,8 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "tutorial.md",
-        "reference.md",
-    ],
+        "reference.md"
+    ]
 )
 
 # Documenter can also automatically deploy documentation to gh-pages.
