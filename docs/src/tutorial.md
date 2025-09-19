@@ -44,6 +44,8 @@ using Overpass
 Overpass.query("waterfountains.overpassql", bbox=(48.22, 16.36, 48.22, 16.36))
 ```
 
+### Parsing response
+
 To keep the package small and flexible, the response is returned **as a string** instead of being parsed.
 Depending on your needs, you can then parse the string, save it, or process it further.
 
