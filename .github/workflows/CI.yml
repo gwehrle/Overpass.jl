@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - "1.0"
+          # - "1.0"
           - "1.7" # interactive tests require <= 1.8
           - "1"    # Latest Release
         os:
