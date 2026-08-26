@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.62.4 2390de5a">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2024-12-05T17:56:05Z"/>
+
+  <node id="117213775" lat="48.2252557" lon="16.3607727">
+    <tag k="addr:city" v="Wien"/>
+    <tag k="addr:country" v="AT"/>
+    <tag k="addr:housenumber" v="10"/>
+    <tag k="addr:postcode" v="1090"/>
+    <tag k="addr:street" v="Julius-Tandler-Platz"/>
+    <tag k="amenity" v="pharmacy"/>
+    <tag k="check_date" v="2024-08-18"/>
+    <tag k="check_date:opening_hours" v="2024-08-18"/>
+    <tag k="dispensing" v="yes"/>
+    <tag k="email" v="info@bahnhof-apotheke.wien"/>
+    <tag k="healthcare" v="pharmacy"/>
+    <tag k="name" v="Bahnhof-Apotheke"/>
+    <tag k="opening_hours" v="Mo-Fr 08:00-18:00; Sa 08:00-12:00"/>
+    <tag k="phone" v="+43 1 3175211"/>
+    <tag k="website" v="https://www.bahnhof-apotheke.wien/"/>
+    <tag k="wheelchair" v="yes"/>
+  </node>
+  <node id="1382612932" lat="48.2254390" lon="16.3605324">
+    <tag k="button_operated" v="no"/>
+    <tag k="check_date:tactile_paving" v="2024-08-18"/>
+    <tag k="crossing" v="traffic_signals"/>
+    <tag k="highway" v="crossing"/>
+    <tag k="tactile_paving" v="no"/>
+    <tag k="traffic_signals:sound" v="yes"/>
+    <tag k="traffic_signals:vibration" v="yes"/>
+  </node>
+  <node id="1466976992" lat="48.2252262" lon="16.3593390">
+    <tag k="amenity" v="clinic"/>
+    <tag k="healthcare" v="clinic"/>
+    <tag k="name" v="Ärztezentrum Alserbach"/>
+    <tag k="opening_hours" v="&quot;Ordination nach Voranmeldung&quot;"/>
+  </node>
+  <node id="1466995415" lat="48.2254036" lon="16.3602975">
+    <tag k="amenity" v="dentist"/>
+    <tag k="check_date" v="2024-08-18"/>
+    <tag k="healthcare" v="dentist"/>
+    <tag k="name" v="DDr. Evelyn Krenn"/>
+    <tag k="opening_hours" v="&quot;nach Vereinbarung&quot;"/>
+    <tag k="phone" v="+43 0 699 111 31 31 0"/>
+  </node>
+  <node id="1467009916" lat="48.2256034" lon="16.3603009">
+    <tag k="addr:city" v="Wien"/>
+    <tag k="addr:country" v="AT"/>
+    <tag k="addr:housenumber" v="2"/>
+    <tag k="addr:postcode" v="1090"/>
+    <tag k="addr:street" v="Julius-Tandler-Platz"/>
+    <tag k="amenity" v="bank"/>
+    <tag k="atm" v="no"/>
+    <tag k="name" v="Western Union Money Transfer"/>
+    <tag k="opening_hours" v="Mo-Sa 09:00-22:00; Su,PH 10:00-22:00"/>
+    <tag k="wheelchair" v="no"/>
+  </node>
+  <node id="1467016185" lat="48.2258532" lon="16.3602259">
+    <tag k="addr:housenumber" v="2A"/>
+    <tag k="addr:postcode" v="1090"/>
+    <tag k="addr:street" v="Julius-Tandler-Platz"/>
+    <tag k="amenity" v="restaurant"/>
+    <tag k="check_date" v="2024-08-18"/>
+    <tag k="cuisine" v="austrian;local;regional"/>
+    <tag k="indoor_seating" v="yes"/>
+    <tag k="name" v="Gasthaus „Zum Heimkehrer“ - Franz-Josef Stüberl"/>
+    <tag k="opening_hours" v="Mo-Su 11:00-23:00"/>
+    <tag k="outdoor_seating" v="parklet"/>
+    <tag k="website" v="https://franz-josef-stueberl.at/"/>
+  </node>
+  <node id="1467030548" lat="48.2256792" lon="16.3608871">
+    <tag k="amenity" v="fast_food"/>
+    <tag k="cuisine" v="kebab"/>
+    <tag k="name" v="Buy &amp; Run"/>
+    <tag k="opening_hours" v="Mo-Fr 12:00-19:00"/>
+  </node>
+  <node id="1467031743" lat="48.2258533" lon="16.3612120">
+    <tag k="amenity" v="fast_food"/>
+    <tag k="check_date" v="2024-10-26"/>
+    <tag k="cuisine" v="turkish;kebab"/>
+    <tag k="diet:vegetarian" v="yes"/>
+    <tag k="indoor_seating" v="no"/>
+    <tag k="name" v="Dönerwerk"/>
+    <tag k="outdoor_seating" v="no"/>
+    <tag k="takeaway" v="only"/>
+    <tag k="wheelchair" v="yes"/>
+  </node>
+  <node id="1707194119" lat="48.2252686" lon="16.3604760">
+    <tag k="button_operated" v="no"/>
+    <tag k="check_date:tactile_paving" v="2024-08-18"/>
+    <tag k="crossing" v="traffic_signals"/>
+    <tag k="highway" v="crossing"/>
+    <tag k="tactile_paving" v="no"/>
+    <tag k="traffic_signals:sound" v="no"/>
+    <tag k="traffic_signals:vibration" v="no"/>
+  </node>
+  <node id="1707194131" lat="48.2255191" lon="16.3607040">
+    <tag k="button_operated" v="no"/>
+    <tag k="check_date:tactile_paving" v="2024-08-18"/>
+    <tag k="crossing" v="traffic_signals"/>
+    <tag k="highway" v="crossing"/>
+    <tag k="tactile_paving" v="no"/>
+    <tag k="traffic_signals:sound" v="yes"/>
+    <tag k="traffic_signals:vibration" v="yes"/>
+  </node>
+  <node id="2458145196" lat="48.2254927" lon="16.3605180">
+    <tag k="highway" v="traffic_signals"/>
+    <tag k="traffic_signals:direction" v="forward"/>
+  </node>
+  <node id="2458145199" lat="48.2252552" lon="16.3604178">
+    <tag k="highway" v="traffic_signals"/>
+    <tag k="traffic_signals:direction" v="forward"/>
+  </node>
+  <node id="2458145201" lat="48.2255191" lon="16.3609037">
+    <tag k="highway" v="traffic_signals"/>
+    <tag k="traffic_signals:direction" v="forward"/>
+  </node>
+  <node id="2533210790" lat="48.2258573" lon="16.3612565">
+    <tag k="amenity" v="telephone"/>
+    <tag k="check_date" v="2023-07-14"/>
+  </node>
+  <node id="2879526164" lat="48.2252333" lon="16.3596674">
+    <tag k="crossing:markings" v="no"/>
+    <tag k="crossing:signals" v="no"/>
+    <tag k="highway" v="crossing"/>
+    <tag k="tactile_paving" v="no"/>
+  </node>
+  <node id="3170863061" lat="48.2252184" lon="16.3595841">
+    <tag k="amenity" v="waste_basket"/>
+    <tag k="check_date" v="2022-11-27"/>
+  </node>
+  <node id="3613641301" lat="48.2251527" lon="16.3601094">
+    <tag k="access" v="yes"/>
+    <tag k="amenity" v="bicycle_parking"/>
+    <tag k="bicycle_parking" v="stands"/>
+    <tag k="capacity" v="8"/>
+    <tag k="covered" v="no"/>
+    <tag k="fee" v="no"/>
+    <tag k="mapillary" v="2924765861134112"/>
+    <tag k="operator" v="Stadt Wien"/>
+    <tag k="operator:type" v="government"/>
+    <tag k="survey:date" v="2020-05-19"/>
+  </node>
+  <node id="3613641307" lat="48.2255888" lon="16.3594706">
+    <tag k="amenity" v="bicycle_parking"/>
+    <tag k="bicycle_parking" v="stands"/>
+    <tag k="capacity" v="8"/>
+    <tag k="covered" v="no"/>
+  </node>
+  <node id="3704516278" lat="48.2253539" lon="16.3604328">
+    <tag k="button_operated" v="no"/>
+    <tag k="check_date:tactile_paving" v="2024-08-18"/>
+    <tag k="crossing" v="traffic_signals"/>
+    <tag k="highway" v="crossing"/>
+    <tag k="tactile_paving" v="no"/>
+    <tag k="traffic_signals:sound" v="no"/>
+    <tag k="traffic_signals:vibration" v="no"/>
+  </node>
+  <node id="3874461602" lat="48.2257106" lon="16.3609984">
+    <tag k="amenity" v="scale"/>
+    <tag k="check_date" v="2024-10-26"/>
+    <tag k="colour" v="silver"/>
+  </node>
+  <node id="6030822791" lat="48.2258708" lon="16.3613563">
+    <tag k="advertising" v="column"/>
+    <tag k="amenity" v="telephone"/>
+    <tag k="check_date" v="2022-10-22"/>
+    <tag k="internet_access" v="yes"/>
+  </node>
+  <node id="6902787615" lat="48.2251125" lon="16.3600273">
+    <tag k="amenity" v="vending_machine"/>
+    <tag k="check_date" v="2024-08-18"/>
+    <tag k="fee" v="no"/>
+    <tag k="operator" v="oe24.at"/>
+    <tag k="vending" v="newspapers"/>
+  </node>
+  <node id="7760517334" lat="48.2256803" lon="16.3606702">
+    <tag k="access" v="yes"/>
+    <tag k="amenity" v="bicycle_parking"/>
+    <tag k="bicycle_parking" v="stands"/>
+    <tag k="capacity" v="22"/>
+    <tag k="covered" v="no"/>
+    <tag k="fee" v="no"/>
+  </node>
+  <node id="7760517335" lat="48.2259097" lon="16.3605965">
+    <tag k="access" v="yes"/>
+    <tag k="amenity" v="bicycle_parking"/>
+    <tag k="bicycle_parking" v="stands"/>
+    <tag k="capacity" v="12"/>
+    <tag k="covered" v="no"/>
+    <tag k="fee" v="no"/>
+  </node>
+  <node id="8780973989" lat="48.2258813" lon="16.3613881">
+    <tag k="amenity" v="atm"/>
+    <tag k="cash_in" v="no"/>
+    <tag k="operator" v="Bawag PSK"/>
+  </node>
+  <node id="8780982223" lat="48.2254340" lon="16.3603530">
+    <tag k="addr:city" v="Wien"/>
+    <tag k="addr:housenumber" v="31"/>
+    <tag k="addr:postcode" v="1090"/>
+    <tag k="addr:street" v="Alserbachstraße"/>
+    <tag k="amenity" v="restaurant"/>
+    <tag k="bar" v="yes"/>
+    <tag k="brewery" v="Birra Moretti"/>
+    <tag k="check_date" v="2024-06-23"/>
+    <tag k="contact:website" v="https://pozzuoli.at"/>
+    <tag k="cuisine" v="pizza"/>
+    <tag k="diet:neopolitan" v="yes"/>
+    <tag k="diet:vegetarian" v="yes"/>
+    <tag k="indoor_seating" v="yes"/>
+    <tag k="name" v="Pizzeria Pozzuoli 2.0"/>
+    <tag k="opening_hours" v="Tu-Fr 11:30-14:30,17:30-22:30; Sa-Su 12:00-22:00"/>
+    <tag k="outdoor_seating" v="parklet"/>
+    <tag k="phone" v="+4319977245"/>
+    <tag k="wheelchair" v="no"/>
+  </node>
+  <node id="10093150060" lat="48.2252722" lon="16.3608444">
+    <tag k="amenity" v="cafe"/>
+    <tag k="check_date" v="2024-08-18"/>
+    <tag k="check_date:opening_hours" v="2024-08-18"/>
+    <tag k="indoor_seating" v="yes"/>
+    <tag k="name" v="Coffee &amp; friends"/>
+    <tag k="opening_hours" v="Mo-Fr 08:00-18:00; Sa 09:00-16:00"/>
+    <tag k="opening_hours:signed" v="no"/>
+    <tag k="outdoor_seating" v="no"/>
+    <tag k="wheelchair" v="limited"/>
+  </node>
+  <node id="10596086875" lat="48.2253415" lon="16.3612258">
+    <tag k="amenity" v="dentist"/>
+    <tag k="check_date:opening_hours" v="2024-03-10"/>
+    <tag k="healthcare" v="dentist"/>
+    <tag k="name" v="Dr. Mádálina Popa Tuns"/>
+    <tag k="opening_hours" v="Mo 14:00-19:00; Tu,Th 09:00-13:00,14:00-19:00; We 09:00-14:00; Fr 09:00-13:00"/>
+    <tag k="phone" v="+43 1 535 62 72"/>
+  </node>
+  <node id="10958148599" lat="48.2248484" lon="16.3612265">
+    <tag k="access" v="private"/>
+    <tag k="amenity" v="charging_station"/>
+    <tag k="capacity" v="3"/>
+  </node>
+  <node id="11665477278" lat="48.2260198" lon="16.3605518">
+    <tag k="amenity" v="waste_basket"/>
+  </node>
+  <node id="11665493595" lat="48.2258311" lon="16.3611204">
+    <tag k="amenity" v="bench"/>
+    <tag k="backrest" v="yes"/>
+    <tag k="material" v="wood"/>
+  </node>
+  <node id="11665506603" lat="48.2253567" lon="16.3603108">
+    <tag k="amenity" v="bench"/>
+    <tag k="backrest" v="yes"/>
+    <tag k="material" v="wood"/>
+  </node>
+  <node id="11951460964" lat="48.2260338" lon="16.3602993">
+    <tag k="addr:housenumber" v="1-3"/>
+    <tag k="addr:street" v="Althanstraße"/>
+    <tag k="amenity" v="bicycle_rental"/>
+    <tag k="bicycle_rental" v="docking_station"/>
+    <tag k="brand" v="WienMobil Rad"/>
+    <tag k="brand:wikidata" v="Q111794110"/>
+    <tag k="capacity" v="19"/>
+    <tag k="check_date" v="2024-06-02"/>
+    <tag k="name" v="Franz Josefs Bahnhof"/>
+    <tag k="network" v="WienMobil Rad"/>
+    <tag k="network:wikidata" v="Q111794110"/>
+    <tag k="operator" v="Nextbike"/>
+    <tag k="operator:wikidata" v="Q2351279"/>
+  </node>
+  <node id="12113136186" lat="48.2253466" lon="16.3595850">
+    <tag k="access" v="yes"/>
+    <tag k="amenity" v="drinking_water"/>
+    <tag k="fee" v="no"/>
+    <tag k="fountain" v="drinking"/>
+    <tag k="wheelchair" v="yes"/>
+  </node>
+  <way id="26179585">
+    <nd ref="624470224"/>
+    <nd ref="2879526162"/>
+    <nd ref="12150227288"/>
+    <nd ref="1830052176"/>
+    <nd ref="1317569589"/>
+    <nd ref="287315437"/>
+    <nd ref="1830052165"/>
+    <nd ref="286684512"/>
+    <nd ref="1830052138"/>
+    <nd ref="1704868266"/>
+    <tag k="highway" v="service"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="124149801">
+    <nd ref="1381689841"/>
+    <nd ref="1382606678"/>
+    <nd ref="1382606680"/>
+    <nd ref="624470224"/>
+    <nd ref="2458145199"/>
+    <nd ref="1707194119"/>
+    <tag k="cycleway:left" v="no"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Alserbachstraße"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="source:width" v="ARCore"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="width" v="4.6"/>
+  </way>
+  <way id="148719102">
+    <nd ref="68203669"/>
+    <nd ref="2397744562"/>
+    <nd ref="68203668"/>
+    <tag k="cycleway:left" v="no"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Althanstraße"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="sidewalk:right" v="separate"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="158537834">
+    <nd ref="3704516278"/>
+    <nd ref="3704516277"/>
+    <nd ref="3704516276"/>
+    <nd ref="3704516275"/>
+    <nd ref="11090397333"/>
+    <nd ref="3704516273"/>
+    <tag k="cycleway:left" v="no"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Alserbachstraße"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="158537837">
+    <nd ref="3704516280"/>
+    <nd ref="1707194131"/>
+    <nd ref="1707194135"/>
+    <nd ref="2365909709"/>
+    <nd ref="2764579830"/>
+    <nd ref="68203669"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="158537839">
+    <nd ref="1707194119"/>
+    <nd ref="1707194122"/>
+    <nd ref="1707194127"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="172056504">
+    <nd ref="1830052174"/>
+    <nd ref="1830052178"/>
+    <nd ref="1830052159"/>
+    <nd ref="1830052149"/>
+    <nd ref="2364067386"/>
+    <nd ref="1830052174"/>
+    <tag k="access" v="private"/>
+    <tag k="amenity" v="parking"/>
+    <tag k="parking" v="surface"/>
+  </way>
+  <way id="186573940">
+    <nd ref="1415220349"/>
+    <nd ref="8892413415"/>
+    <nd ref="8524882706"/>
+    <nd ref="8524882698"/>
+    <nd ref="3704516281"/>
+    <nd ref="2458145201"/>
+    <nd ref="3704516280"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="exclusive"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="2"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="sidewalk:both" v="separate"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="turn:lanes" v="through|right"/>
+  </way>
+  <way id="201312912">
+    <nd ref="3704516279"/>
+    <nd ref="8524882696"/>
+    <nd ref="1707194125"/>
+    <nd ref="8524882697"/>
+    <nd ref="1707194122"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="highway" v="secondary_link"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:both" v="no"/>
+    <tag k="sidewalk:both" v="separate"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="concrete"/>
+  </way>
+  <way id="231386595">
+    <nd ref="2397744568"/>
+    <nd ref="2458145196"/>
+    <nd ref="1382612932"/>
+    <nd ref="3704516279"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="exclusive"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="lanes" v="2"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="sidewalk:right" v="separate"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="turn:lanes" v="left|right"/>
+  </way>
+  <way id="237952963">
+    <nd ref="7661276578"/>
+    <nd ref="2458134405"/>
+    <nd ref="2365909685"/>
+    <nd ref="7661276579"/>
+    <tag k="footway" v="crossing"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="concrete"/>
+  </way>
+  <way id="237953916">
+    <nd ref="6372575564"/>
+    <nd ref="3704516279"/>
+    <nd ref="3704516278"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:both" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="237953917">
+    <nd ref="1382606703"/>
+    <nd ref="2458145198"/>
+    <nd ref="1382612937"/>
+    <nd ref="2296881799"/>
+    <nd ref="1382606707"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="2"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="turn:lanes" v="through|right"/>
+  </way>
+  <way id="238057955">
+    <nd ref="2397744570"/>
+    <nd ref="2397744585"/>
+    <nd ref="2397744569"/>
+    <nd ref="12347667759"/>
+    <nd ref="2397744580"/>
+    <nd ref="2397744565"/>
+    <nd ref="2397744567"/>
+    <nd ref="4353813922"/>
+    <nd ref="2397744560"/>
+    <nd ref="4353787233"/>
+    <nd ref="2397744573"/>
+    <nd ref="2397744564"/>
+    <nd ref="2397744578"/>
+    <nd ref="2397744576"/>
+    <nd ref="2397744568"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Althanstraße"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="sidewalk:right" v="separate"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="271495661">
+    <nd ref="2764579791"/>
+    <nd ref="2764579798"/>
+    <nd ref="2764579796"/>
+    <nd ref="2764579787"/>
+    <nd ref="2764579791"/>
+    <tag k="amenity" v="shelter"/>
+    <tag k="shelter_type" v="public_transport"/>
+  </way>
+  <way id="271495662">
+    <nd ref="2764579778"/>
+    <nd ref="2764579786"/>
+    <nd ref="2764579789"/>
+    <nd ref="2764579783"/>
+    <nd ref="2764579778"/>
+    <tag k="amenity" v="shelter"/>
+    <tag k="shelter_type" v="public_transport"/>
+  </way>
+  <way id="364402682">
+    <nd ref="3684433366"/>
+    <nd ref="12347863917"/>
+    <tag k="footway" v="sidewalk"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="street:name" v="Althanstraße"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="423649344">
+    <nd ref="3188617612"/>
+    <nd ref="3188617610"/>
+    <nd ref="3188614827"/>
+    <tag k="highway" v="corridor"/>
+    <tag k="indoor" v="yes"/>
+    <tag k="level" v="0"/>
+    <tag k="surface" v="paving_stones"/>
+    <tag k="wheelchair" v="yes"/>
+  </way>
+  <way id="437566095">
+    <nd ref="4353787225"/>
+    <nd ref="4353787222"/>
+    <nd ref="11136759704"/>
+    <nd ref="11061716209"/>
+    <nd ref="3680510470"/>
+    <nd ref="11678885523"/>
+    <nd ref="3680510471"/>
+    <nd ref="3680510472"/>
+    <nd ref="12347784163"/>
+    <nd ref="12347784173"/>
+    <nd ref="2458294608"/>
+    <tag k="footway" v="sidewalk"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="street:name" v="Althanstraße"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="680576462">
+    <nd ref="3704516280"/>
+    <nd ref="6372575564"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:both" v="no"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="820466010">
+    <nd ref="2458134423"/>
+    <nd ref="2879526166"/>
+    <tag k="footway" v="crossing"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="paving_stones"/>
+  </way>
+  <way id="820466011">
+    <nd ref="2879526166"/>
+    <nd ref="3704516278"/>
+    <nd ref="7661276578"/>
+    <tag k="footway" v="crossing"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="820466012">
+    <nd ref="7661276579"/>
+    <nd ref="1707194119"/>
+    <nd ref="2458134414"/>
+    <tag k="footway" v="crossing"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="1056483529">
+    <nd ref="1707194127"/>
+    <nd ref="1382606703"/>
+    <tag k="cycleway:right" v="lane"/>
+    <tag k="cycleway:right:lane" v="advisory"/>
+    <tag k="dual_carriageway" v="yes"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="50"/>
+    <tag k="name" v="Julius-Tandler-Platz"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="parking:left" v="no"/>
+    <tag k="smoothness" v="excellent"/>
+    <tag k="surface" v="concrete"/>
+  </way>
+  <way id="1206919350">
+    <nd ref="11183643748"/>
+    <nd ref="11183643749"/>
+    <nd ref="11183643750"/>
+    <nd ref="11183643751"/>
+    <nd ref="11183643748"/>
+    <tag k="access" v="private"/>
+    <tag k="amenity" v="parking"/>
+    <tag k="parking" v="surface"/>
+  </way>
+  <way id="1334681610">
+    <nd ref="12347863917"/>
+    <nd ref="2458134423"/>
+    <tag k="footway" v="sidewalk"/>
+    <tag k="highway" v="footway"/>
+    <tag k="lit" v="yes"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="street:name" v="Julius-Tandler-Platz"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+
+</osm>
