@@ -2,73 +2,89 @@ using Test
 using TestSetExtensions
 
 using Overpass
-using BrokenRecord: configure!, playback
 using HTTP
+using Mocking
 using Preferences
 using Dates
 
-# Configure BrokenRecord
-configure!(;
-    path = string(@__DIR__, "/HTTP/"),
-    extension = "bson",
-    ignore_headers = ["User-Agent"]
-)
+Mocking.activate()
+
+# Recorded Overpass responses live as raw body fixtures next to this file.
+const RESPONSES = joinpath(@__DIR__, "responses")
+recorded_body(name) = read(joinpath(RESPONSES, name * ".body"), String)
+recorded_response(name) = HTTP.Response(200, recorded_body(name))
+
+# Overpass reaches the network through `HTTP.post`/`HTTP.get`, both marked with
+# `@mock` in the source. These patches replay a recorded response instead.
+post_patch(name) = @patch HTTP.post(url; kw...) = recorded_response(name)
+get_patch(name) = @patch HTTP.get(url; kw...) = recorded_response(name)
+
+# A representative Overpass 400 body, as returned for a malformed query.
+const ERROR_BODY = """
+<!DOCTYPE html>
+<html><head><title>OSM3S Response</title></head><body>
+<p>The data included in this document is from www.openstreetmap.org.</p>
+<p><strong style="color:#FF0000">Error</strong>: line 1: parse error: Unknown type "noddddddde"</p>
+</body></html>
+"""
+error_patch() = @patch HTTP.post(url; kw...) = throw(HTTP.StatusError(HTTP.Response(400, ERROR_BODY)))
 
 # Fixate now to fix date
 Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
 @testset ExtendedTestSet "Overpass.jl" begin
+    @testset "runs on HTTP 2" begin
+        @test pkgversion(HTTP) >= v"2"
+    end
+
     @testset "query" begin
-        @test playback(
-            () -> Overpass.query("[out:json];node[amenity=drinking_water](48.224410300027,16.36058699342046,48.22702986850222,16.364722959721423);out;"),
-            "op-query") != ""
+        apply(post_patch("op-query")) do
+            @test Overpass.query("[out:json];node[amenity=drinking_water](48.224410300027,16.36058699342046,48.22702986850222,16.364722959721423);out;") != ""
 
-        @test playback(
-            () -> Overpass.query("[out:json];node[amenity=drinking_water]({{bbox}});out;",
+            @test Overpass.query("[out:json];node[amenity=drinking_water]({{bbox}});out;",
                 bbox = (48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query") != ""
+                    48.22702986850222, 16.364722959721423)) != ""
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/cycle_network.overpassql"), bbox = (
-                    48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query-bbox") != ""
-
-        @test playback(
-            () -> Overpass.query(
+            @test Overpass.query(
                 string(@__DIR__, "/queries/drinking_water_simple.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query") != ""
+                    48.22702986850222, 16.364722959721423)) != ""
+        end
 
-        @test playback(
-            () -> Overpass.query(
+        apply(post_patch("op-query-bbox")) do
+            @test Overpass.query(
+                string(@__DIR__, "/queries/cycle_network.overpassql"), bbox = (
+                    48.224410300027, 16.36058699342046,
+                    48.22702986850222, 16.364722959721423)) != ""
+        end
+
+        apply(post_patch("op-query-longquery")) do
+            @test Overpass.query(
                 string(@__DIR__, "/queries/drinking_water.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query-longquery") != ""
+                    48.22702986850222, 16.364722959721423)) != ""
+        end
 
-        @test playback(
-            () -> Overpass.query(
+        apply(post_patch("op-query-date-bbox")) do
+            @test Overpass.query(
                 string(@__DIR__, "/queries/shortcut_date_and_bbox.overpassql"), bbox = (
                     48.224410300027, 16.36058699342046,
-                    48.22702986850222, 16.364722959721423)),
-            "op-query-date-bbox") != ""
+                    48.22702986850222, 16.364722959721423)) != ""
+        end
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/shortcut_date.overpassql")),
-            "op-query-date") != ""
+        apply(post_patch("op-query-date")) do
+            @test Overpass.query(
+                string(@__DIR__, "/queries/shortcut_date.overpassql")) != ""
+        end
 
-        @test playback(
-            () -> Overpass.query(
-                string(@__DIR__, "/queries/shortcut_different_dates.overpassql")),
-            "op-query-different-dates") != ""
+        apply(post_patch("op-query-different-dates")) do
+            @test Overpass.query(
+                string(@__DIR__, "/queries/shortcut_different_dates.overpassql")) != ""
+        end
 
-        @test_throws ErrorException playback(() -> Overpass.query("noddddddde;out;"),
-            "error")
+        apply(error_patch()) do
+            @test_throws DomainError Overpass.query("noddddddde;out;")
+        end
     end
 
     @testset "set_endpoint" begin
@@ -91,7 +107,9 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
     @testset "status" begin
         @testset "default endpoint" begin
-            status = playback(() -> Overpass.status(), "op-status")
+            status = apply(get_patch("op-status")) do
+                Overpass.status()
+            end
 
             @test status isa Overpass.Status
             @test status.connection_id == "3158479246"
@@ -103,7 +121,9 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
         @testset "ru endpoint" begin
             Overpass.set_endpoint("https://maps.mail.ru/osm/tools/overpass/api/")
-            status = playback(() -> Overpass.status(), "op-status-ru")
+            status = apply(get_patch("op-status-ru")) do
+                Overpass.status()
+            end
 
             @test status isa Overpass.Status
             @test status.connection_id == "1293416468"
@@ -117,7 +137,9 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
         @testset "coffee endpoint" begin
             Overpass.set_endpoint("https://overpass.private.coffee/api/")
-            status = playback(() -> Overpass.status(), "op-status-coffee")
+            status = apply(get_patch("op-status-coffee")) do
+                Overpass.status()
+            end
 
             @test status isa Overpass.Status
             @test status.connection_id == "177472788"
@@ -131,7 +153,9 @@ Dates.now(::Type{UTC}) = DateTime(2024, 12, 1)
 
         @testset "JP endpoint" begin
             Overpass.set_endpoint("https://overpass.osm.jp/api/")
-            status = playback(() -> Overpass.status(), "op-status-jp")
+            status = apply(get_patch("op-status-jp")) do
+                Overpass.status()
+            end
 
             @test status isa Overpass.Status
             @test status.connection_id == "1293416468"
