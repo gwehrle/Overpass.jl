@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.62.4 2390de5a">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2024-12-05T17:57:02Z"/>
+
+  <way id="1259755317">
+    <bounds minlat="52.5196875" minlon="13.3629905" maxlat="52.5198458" maxlon="13.3636647"/>
+    <nd ref="1919957913" lat="52.5196875" lon="13.3629905"/>
+    <nd ref="11711728704" lat="52.5198458" lon="13.3636647"/>
+    <tag k="access" v="no"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="class:bicycle" v="3"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="yes"/>
+    <tag k="name" v="Magnus-Hirschfeld-Ufer"/>
+    <tag k="name:etymology:wikidata" v="Q57592"/>
+    <tag k="opening_date" v="2025"/>
+    <tag k="postal_code" v="10557"/>
+    <tag k="smoothness" v="excellent"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="wikidata" v="Q56258976"/>
+    <tag k="wikimedia_commons" v="Category:Magnus-Hirschfeld-Ufer (Berlin-Moabit)"/>
+  </way>
+  <way id="42747980">
+    <bounds minlat="52.5099443" minlon="13.3981286" maxlat="52.5100819" maxlon="13.4003034"/>
+    <nd ref="29208248" lat="52.5099443" lon="13.3981286"/>
+    <nd ref="11391695513" lat="52.5099487" lon="13.3981977"/>
+    <nd ref="1772850068" lat="52.5100819" lon="13.4003034"/>
+    <tag k="construction" v="residential"/>
+    <tag k="cycleway:both" v="no"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="construction"/>
+    <tag k="image" v="https://commons.wikimedia.org/wiki/File:Mitte_Krausenstra%C3%9Fe_35-001.jpg"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="30"/>
+    <tag k="maxspeed:type" v="DE:zone30"/>
+    <tag k="name" v="Krausenstraße"/>
+    <tag k="name:etymology:wikidata" v="Q21449125"/>
+    <tag k="name:etymology:wikipedia" v="de:Krause"/>
+    <tag k="opening_date" v="2027-07-01"/>
+    <tag k="parking:both" v="lane"/>
+    <tag k="parking:both:orientation" v="perpendicular"/>
+    <tag k="postal_code" v="10117"/>
+    <tag k="sidewalk:both" v="separate"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="source:maxspeed" v="DE:zone30"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="traffic_sign" v="DE:274.1"/>
+    <tag k="wikidata" v="Q99938174"/>
+    <tag k="wikimedia_commons" v="Category:Krausenstraße (Berlin-Mitte)"/>
+    <tag k="zone:maxspeed" v="DE:30"/>
+  </way>
+  <way id="1302365010">
+    <bounds minlat="52.5429777" minlon="13.3719012" maxlat="52.5429910" maxlon="13.3721764"/>
+    <nd ref="12062012998" lat="52.5429777" lon="13.3719012"/>
+    <nd ref="12062012999" lat="52.5429910" lon="13.3721764"/>
+    <tag k="check_date" v="2024-07-18"/>
+    <tag k="construction" v="residential"/>
+    <tag k="cycleway:both" v="no"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lane_markings" v="no"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="30"/>
+    <tag k="name" v="Ravenéstraße"/>
+    <tag k="name:etymology:wikidata" v="Q1282622"/>
+    <tag k="opening_date" v="2024-12-23"/>
+    <tag k="parking:both" v="lane"/>
+    <tag k="parking:both:orientation" v="parallel"/>
+    <tag k="postal_code" v="13347"/>
+    <tag k="sidewalk" v="separate"/>
+    <tag k="smoothness" v="bad"/>
+    <tag k="surface" v="sett"/>
+    <tag k="wikipedia" v="de:Ravenéstraße (Berlin)"/>
+  </way>
+  <way id="16867992">
+    <bounds minlat="52.5681561" minlon="13.3059135" maxlat="52.5696201" maxlon="13.3064255"/>
+    <nd ref="26982746" lat="52.5681561" lon="13.3064255"/>
+    <nd ref="1468428438" lat="52.5682518" lon="13.3063740"/>
+    <nd ref="26983075" lat="52.5685024" lon="13.3062440"/>
+    <nd ref="9670978235" lat="52.5686526" lon="13.3061758"/>
+    <nd ref="1288393603" lat="52.5688102" lon="13.3061144"/>
+    <nd ref="26983082" lat="52.5691283" lon="13.3060174"/>
+    <nd ref="1288393426" lat="52.5693867" lon="13.3059615"/>
+    <nd ref="26983085" lat="52.5696201" lon="13.3059135"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Hamburg"/>
+    <tag k="destination:ref" v="A 111"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="2"/>
+    <tag k="maxheight" v="default"/>
+    <tag k="maxspeed" v="60"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-01"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="turn:lanes" v="merge_to_right|none"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="215668803">
+    <bounds minlat="52.5682344" minlon="13.3053627" maxlat="52.5687079" maxlon="13.3054844"/>
+    <nd ref="26983077" lat="52.5687079" lon="13.3053627"/>
+    <nd ref="2251393214" lat="52.5684950" lon="13.3054036"/>
+    <nd ref="6250962606" lat="52.5683663" lon="13.3054376"/>
+    <nd ref="6250962605" lat="52.5683330" lon="13.3054464"/>
+    <nd ref="26982747" lat="52.5682344" lon="13.3054844"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Seidelstraße"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="3"/>
+    <tag k="maxspeed" v="60"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-01"/>
+    <tag k="placement" v="right_of:1"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="turn:lanes" v="left|left|right"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="215668787">
+    <bounds minlat="52.5696201" minlon="13.3057129" maxlat="52.5705137" maxlon="13.3059135"/>
+    <nd ref="26983085" lat="52.5696201" lon="13.3059135"/>
+    <nd ref="26983105" lat="52.5705137" lon="13.3057129"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Hamburg"/>
+    <tag k="destination:ref" v="A 111"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="1"/>
+    <tag k="maxspeed" v="60"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-01"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="215668794">
+    <bounds minlat="52.5648813" minlon="13.3069542" maxlat="52.5671808" maxlon="13.3123812"/>
+    <nd ref="267424810" lat="52.5648813" lon="13.3123812"/>
+    <nd ref="1298219425" lat="52.5650056" lon="13.3119268"/>
+    <nd ref="26871379" lat="52.5651279" lon="13.3114875"/>
+    <nd ref="267426994" lat="52.5654033" lon="13.3104736"/>
+    <nd ref="26871380" lat="52.5655513" lon="13.3099778"/>
+    <nd ref="267426996" lat="52.5657057" lon="13.3095137"/>
+    <nd ref="26871381" lat="52.5658446" lon="13.3091339"/>
+    <nd ref="267426997" lat="52.5659736" lon="13.3088139"/>
+    <nd ref="26871382" lat="52.5661857" lon="13.3083476"/>
+    <nd ref="267427098" lat="52.5664150" lon="13.3079011"/>
+    <nd ref="267427099" lat="52.5665922" lon="13.3076212"/>
+    <nd ref="267427100" lat="52.5667770" lon="13.3073842"/>
+    <nd ref="267427101" lat="52.5669784" lon="13.3071501"/>
+    <nd ref="26871384" lat="52.5671808" lon="13.3069542"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Hamburg;Tegel;Holzhauser Straße"/>
+    <tag k="destination:ref" v="A 111"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="2"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxheight" v="default"/>
+    <tag k="maxspeed" v="80"/>
+    <tag k="note" v="A 105 wurde herabgestuft"/>
+    <tag k="old_ref" v="A 105"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-17"/>
+    <tag k="placement" v="middle_of:2"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="215668806">
+    <bounds minlat="52.5687079" minlon="13.3052761" maxlat="52.5708850" maxlon="13.3053892"/>
+    <nd ref="2251393217" lat="52.5708850" lon="13.3053892"/>
+    <nd ref="26983090" lat="52.5703099" lon="13.3053193"/>
+    <nd ref="602546634" lat="52.5699939" lon="13.3052972"/>
+    <nd ref="26983087" lat="52.5696835" lon="13.3052761"/>
+    <nd ref="9670978242" lat="52.5693571" lon="13.3052823"/>
+    <nd ref="26983081" lat="52.5691710" lon="13.3052965"/>
+    <nd ref="2251393215" lat="52.5689185" lon="13.3053250"/>
+    <nd ref="26983077" lat="52.5687079" lon="13.3053627"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Seidelstraße"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="2"/>
+    <tag k="maxspeed" v="60"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-01"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="215668793">
+    <bounds minlat="52.5708850" minlon="13.3053892" maxlat="52.5714947" maxlon="13.3055249"/>
+    <nd ref="26871401" lat="52.5714947" lon="13.3055249"/>
+    <nd ref="2251393217" lat="52.5708850" lon="13.3053892"/>
+    <tag k="construction" v="motorway_link"/>
+    <tag k="destination" v="Seidelstraße"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="2"/>
+    <tag k="maxspeed" v="60"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025-04-01"/>
+    <tag k="placement" v="transition"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="176684208">
+    <bounds minlat="52.5647295" minlon="13.3931507" maxlat="52.5651716" maxlon="13.3935427"/>
+    <nd ref="11152977110" lat="52.5651716" lon="13.3931507"/>
+    <nd ref="411051236" lat="52.5648837" lon="13.3933202"/>
+    <nd ref="11152977119" lat="52.5647295" lon="13.3935427"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="no"/>
+    <tag k="opening_date" v="2028"/>
+    <tag k="smoothness" v="good"/>
+    <tag k="surface" v="paving_stones"/>
+  </way>
+  <way id="1149640630">
+    <bounds minlat="52.5654138" minlon="13.3921553" maxlat="52.5658432" maxlon="13.3927917"/>
+    <nd ref="390483215" lat="52.5658432" lon="13.3921553"/>
+    <nd ref="247765065" lat="52.5654138" lon="13.3927917"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="no"/>
+    <tag k="opening_date" v="2028"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="width" v="2"/>
+  </way>
+  <way id="1149641617">
+    <bounds minlat="52.5648243" minlon="13.3933472" maxlat="52.5650744" maxlon="13.3936977"/>
+    <nd ref="9594926945" lat="52.5650744" lon="13.3933472"/>
+    <nd ref="411051231" lat="52.5649712" lon="13.3934967"/>
+    <nd ref="10994659498" lat="52.5648753" lon="13.3936294"/>
+    <nd ref="11152977120" lat="52.5648243" lon="13.3936977"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="no"/>
+    <tag k="opening_date" v="2028"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="concrete"/>
+    <tag k="width" v="2"/>
+  </way>
+  <way id="1149641619">
+    <bounds minlat="52.5650744" minlon="13.3927917" maxlat="52.5654138" maxlon="13.3933472"/>
+    <nd ref="247765065" lat="52.5654138" lon="13.3927917"/>
+    <nd ref="247765066" lat="52.5652748" lon="13.3929935"/>
+    <nd ref="11152977110" lat="52.5651716" lon="13.3931507"/>
+    <nd ref="247765067" lat="52.5651555" lon="13.3931752"/>
+    <nd ref="9594926944" lat="52.5650972" lon="13.3932668"/>
+    <nd ref="9594926945" lat="52.5650744" lon="13.3933472"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="no"/>
+    <tag k="opening_date" v="2028"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="dirt"/>
+    <tag k="width" v="2"/>
+  </way>
+  <way id="1245499890">
+    <bounds minlat="52.5658432" minlon="13.3920384" maxlat="52.5659224" maxlon="13.3921553"/>
+    <nd ref="1750903306" lat="52.5659224" lon="13.3920384"/>
+    <nd ref="390483215" lat="52.5658432" lon="13.3921553"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="no"/>
+    <tag k="opening_date" v="2028"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="compacted"/>
+  </way>
+  <way id="1303423090">
+    <bounds minlat="52.5635224" minlon="13.4080061" maxlat="52.5637082" maxlon="13.4083263"/>
+    <nd ref="9509292681" lat="52.5635224" lon="13.4080061"/>
+    <nd ref="11359776967" lat="52.5636490" lon="13.4082244"/>
+    <nd ref="29421720" lat="52.5637082" lon="13.4083263"/>
+    <tag k="check_date" v="2024-08-30"/>
+    <tag k="cycleway:both" v="no"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="30"/>
+    <tag k="name" v="Dolomitenstraße"/>
+    <tag k="name:etymology:wikidata" v="Q1283"/>
+    <tag k="opening_date" v="2025-08-01"/>
+    <tag k="parking:both" v="lane"/>
+    <tag k="parking:both:orientation" v="parallel"/>
+    <tag k="postal_code" v="13187"/>
+    <tag k="sidewalk" v="separate"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="sett"/>
+  </way>
+  <way id="82451158">
+    <bounds minlat="52.6230678" minlon="13.3198774" maxlat="52.6249266" maxlon="13.3237922"/>
+    <nd ref="30838607" lat="52.6230678" lon="13.3198774"/>
+    <nd ref="6419792686" lat="52.6231170" lon="13.3199331"/>
+    <nd ref="2266378682" lat="52.6231947" lon="13.3199892"/>
+    <nd ref="6419792685" lat="52.6234948" lon="13.3202818"/>
+    <nd ref="30838673" lat="52.6237684" lon="13.3206757"/>
+    <nd ref="30838672" lat="52.6240398" lon="13.3211569"/>
+    <nd ref="2777471130" lat="52.6243051" lon="13.3218728"/>
+    <nd ref="30838677" lat="52.6245699" lon="13.3226932"/>
+    <nd ref="9001443639" lat="52.6248699" lon="13.3236175"/>
+    <nd ref="30838681" lat="52.6249266" lon="13.3237922"/>
+    <tag k="construction" v="residential"/>
+    <tag k="cycleway" v="track"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="30"/>
+    <tag k="name" v="Schildower Straße"/>
+    <tag k="name:etymology:wikidata" v="Q55726050"/>
+    <tag k="opening_date" v="2025-05-01"/>
+    <tag k="postal_code" v="13467"/>
+    <tag k="sidewalk" v="both"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="wikidata" v="Q97579054"/>
+  </way>
+  <way id="1270860689">
+    <bounds minlat="52.2735816" minlon="13.4311342" maxlat="52.2924502" maxlon="13.4364368"/>
+    <nd ref="408782050" lat="52.2735816" lon="13.4362580"/>
+    <nd ref="12241091283" lat="52.2736168" lon="13.4359446"/>
+    <nd ref="12241091281" lat="52.2736842" lon="13.4358292"/>
+    <nd ref="12241091279" lat="52.2737284" lon="13.4358051"/>
+    <nd ref="12241091282" lat="52.2737695" lon="13.4358310"/>
+    <nd ref="12241091280" lat="52.2738611" lon="13.4359893"/>
+    <nd ref="11801911580" lat="52.2739258" lon="13.4360834"/>
+    <nd ref="11801911581" lat="52.2742446" lon="13.4362646"/>
+    <nd ref="11801911582" lat="52.2746021" lon="13.4363733"/>
+    <nd ref="11801911583" lat="52.2750206" lon="13.4364186"/>
+    <nd ref="11801911584" lat="52.2756386" lon="13.4364368"/>
+    <nd ref="11801911585" lat="52.2767740" lon="13.4362898"/>
+    <nd ref="11801911586" lat="52.2778587" lon="13.4360142"/>
+    <nd ref="11801911587" lat="52.2793823" lon="13.4355582"/>
+    <nd ref="11801911588" lat="52.2803995" lon="13.4352787"/>
+    <nd ref="11801911589" lat="52.2814732" lon="13.4349022"/>
+    <nd ref="11801911590" lat="52.2818614" lon="13.4347291"/>
+    <nd ref="11516610507" lat="52.2856156" lon="13.4335501"/>
+    <nd ref="12250057657" lat="52.2861385" lon="13.4333473"/>
+    <nd ref="11516610506" lat="52.2894457" lon="13.4320648"/>
+    <nd ref="11516610505" lat="52.2914287" lon="13.4314957"/>
+    <nd ref="11516610504" lat="52.2920833" lon="13.4312936"/>
+    <nd ref="5419434399" lat="52.2924502" lon="13.4311342"/>
+    <tag k="check_date" v="2024.01.14"/>
+    <tag k="highway" v="construction"/>
+    <tag k="name" v="Nord-Süd Verbinder"/>
+    <tag k="opening_date" v="2026"/>
+  </way>
+  <way id="153260798">
+    <bounds minlat="52.3881395" minlon="13.5650004" maxlat="52.3885239" maxlon="13.5656509"/>
+    <nd ref="1659650257" lat="52.3881395" lon="13.5650004"/>
+    <nd ref="9698974479" lat="52.3885037" lon="13.5656113"/>
+    <nd ref="1659650264" lat="52.3885239" lon="13.5656509"/>
+    <tag k="bicycle" v="designated"/>
+    <tag k="construction" v="path"/>
+    <tag k="foot" v="designated"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="yes"/>
+    <tag k="note" v="anwohnerbrief mit zeitraum https://gemeinde-schoenefeld.de/wp-content/uploads/2024/03/2024-05-22_Anwohnerbrief.pdf"/>
+    <tag k="opening_date" v="2025-12-31"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="surface" v="asphalt"/>
+  </way>
+  <way id="153260813">
+    <bounds minlat="52.3876233" minlon="13.5636269" maxlat="52.3881395" maxlon="13.5650004"/>
+    <nd ref="1659650250" lat="52.3876724" lon="13.5636269"/>
+    <nd ref="1659650246" lat="52.3876233" lon="13.5638781"/>
+    <nd ref="1659650255" lat="52.3877120" lon="13.5643077"/>
+    <nd ref="1659650257" lat="52.3881395" lon="13.5650004"/>
+    <tag k="bicycle" v="designated"/>
+    <tag k="construction" v="path"/>
+    <tag k="foot" v="designated"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lit" v="yes"/>
+    <tag k="note" v="anwohnerbrief mit zeitraum https://gemeinde-schoenefeld.de/wp-content/uploads/2024/03/2024-05-22_Anwohnerbrief.pdf"/>
+    <tag k="opening_date" v="2025-12-31"/>
+    <tag k="smoothness" v="bad"/>
+    <tag k="surface" v="paving_stones"/>
+  </way>
+  <way id="430595488">
+    <bounds minlat="52.4689596" minlon="13.4594652" maxlat="52.4851977" maxlon="13.4623532"/>
+    <nd ref="9181013324" lat="52.4851977" lon="13.4598666"/>
+    <nd ref="1983951045" lat="52.4849485" lon="13.4600242"/>
+    <nd ref="3664322630" lat="52.4846701" lon="13.4601783"/>
+    <nd ref="356314905" lat="52.4842982" lon="13.4603330"/>
+    <nd ref="4506743814" lat="52.4840367" lon="13.4603903"/>
+    <nd ref="9181013319" lat="52.4837766" lon="13.4604192"/>
+    <nd ref="1983951043" lat="52.4834553" lon="13.4604222"/>
+    <nd ref="9181013317" lat="52.4831118" lon="13.4603736"/>
+    <nd ref="4072004409" lat="52.4825410" lon="13.4602500"/>
+    <nd ref="356314917" lat="52.4818659" lon="13.4600959"/>
+    <nd ref="4072004406" lat="52.4811846" lon="13.4599513"/>
+    <nd ref="9181008112" lat="52.4809458" lon="13.4599230"/>
+    <nd ref="356314911" lat="52.4807035" lon="13.4599237"/>
+    <nd ref="9181008110" lat="52.4804525" lon="13.4599498"/>
+    <nd ref="4072004404" lat="52.4802004" lon="13.4600144"/>
+    <nd ref="9181008108" lat="52.4799412" lon="13.4601134"/>
+    <nd ref="356314896" lat="52.4796791" lon="13.4602522"/>
+    <nd ref="4072004402" lat="52.4793551" lon="13.4604476"/>
+    <nd ref="4072004400" lat="52.4789205" lon="13.4607565"/>
+    <nd ref="356314890" lat="52.4785364" lon="13.4610516"/>
+    <nd ref="356314878" lat="52.4776784" lon="13.4616645"/>
+    <nd ref="9181008106" lat="52.4773552" lon="13.4618354"/>
+    <nd ref="2488664120" lat="52.4770530" lon="13.4619819"/>
+    <nd ref="356314914" lat="52.4763717" lon="13.4622317"/>
+    <nd ref="2488664115" lat="52.4757432" lon="13.4623458"/>
+    <nd ref="356314899" lat="52.4751806" lon="13.4623532"/>
+    <nd ref="4075503072" lat="52.4747163" lon="13.4623102"/>
+    <nd ref="356314888" lat="52.4743722" lon="13.4622414"/>
+    <nd ref="356314873" lat="52.4739707" lon="13.4621195"/>
+    <nd ref="4071953902" lat="52.4736476" lon="13.4620077"/>
+    <nd ref="4071953899" lat="52.4731424" lon="13.4617674"/>
+    <nd ref="2488664113" lat="52.4722276" lon="13.4611504"/>
+    <nd ref="4298628341" lat="52.4716717" lon="13.4607801"/>
+    <nd ref="4298628340" lat="52.4714940" lon="13.4606618"/>
+    <nd ref="2488664109" lat="52.4711735" lon="13.4604523"/>
+    <nd ref="7426429082" lat="52.4706792" lon="13.4601629"/>
+    <nd ref="2488664103" lat="52.4701956" lon="13.4599293"/>
+    <nd ref="2488664097" lat="52.4693149" lon="13.4595926"/>
+    <nd ref="356314952" lat="52.4689596" lon="13.4594652"/>
+    <tag k="access" v="no"/>
+    <tag k="construction" v="motorway"/>
+    <tag k="cutting" v="yes"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="3"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="opening_date" v="2025"/>
+    <tag k="ref" v="A 100"/>
+    <tag k="surface" v="asphalt"/>
+    <tag k="urban" v="yes"/>
+  </way>
+  <way id="1262014804">
+    <bounds minlat="52.5406482" minlon="13.4866715" maxlat="52.5409285" maxlon="13.4875488"/>
+    <nd ref="10041233946" lat="52.5409285" lon="13.4866715"/>
+    <nd ref="11725986831" lat="52.5408376" lon="13.4869400"/>
+    <nd ref="11725986832" lat="52.5407569" lon="13.4871981"/>
+    <nd ref="11725986833" lat="52.5406482" lon="13.4875488"/>
+    <tag k="check_date" v="2024-03-13"/>
+    <tag k="highway" v="construction"/>
+    <tag k="opening_date" v="2026-04-40"/>
+  </way>
+  <way id="1275438996">
+    <bounds minlat="52.5406482" minlon="13.4865504" maxlat="52.5410018" maxlon="13.4875488"/>
+    <nd ref="11725986833" lat="52.5406482" lon="13.4875488"/>
+    <nd ref="11725986832" lat="52.5407569" lon="13.4871981"/>
+    <nd ref="10041233941" lat="52.5407642" lon="13.4871746"/>
+    <nd ref="11725986831" lat="52.5408376" lon="13.4869400"/>
+    <nd ref="560731418" lat="52.5408422" lon="13.4869252"/>
+    <nd ref="10041233946" lat="52.5409285" lon="13.4866715"/>
+    <nd ref="10041233945" lat="52.5409403" lon="13.4866415"/>
+    <nd ref="1828882312" lat="52.5409895" lon="13.4865691"/>
+    <nd ref="1828882313" lat="52.5410018" lon="13.4865504"/>
+    <tag k="check_date" v="2024-04-23"/>
+    <tag k="cycleway:both" v="no"/>
+    <tag k="foot" v="use_sidepath"/>
+    <tag k="highway" v="construction"/>
+    <tag k="lanes" v="1"/>
+    <tag k="lit" v="yes"/>
+    <tag k="maxspeed" v="30"/>
+    <tag k="maxspeed:type" v="DE:zone30"/>
+    <tag k="name" v="Reichenberger Straße"/>
+    <tag k="name:etymology:wikidata" v="Q1410743"/>
+    <tag k="opening_date" v="2026-04-30"/>
+    <tag k="postal_code" v="13055"/>
+    <tag k="sidewalk:both" v="separate"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="source:maxspeed" v="DE:zone30"/>
+    <tag k="surface" v="paving_stones"/>
+    <tag k="traffic_sign" v="DE:274.1"/>
+    <tag k="zone:maxspeed" v="DE:30"/>
+  </way>
+  <way id="27944267">
+    <bounds minlat="52.5204198" minlon="13.5775196" maxlat="52.5204763" maxlon="13.5778423"/>
+    <nd ref="306706006" lat="52.5204763" lon="13.5775196"/>
+    <nd ref="270639542" lat="52.5204198" lon="13.5778423"/>
+    <tag k="access" v="no"/>
+    <tag k="bridge" v="yes"/>
+    <tag k="check_date" v="2024-10-19"/>
+    <tag k="construction" v="footway"/>
+    <tag k="highway" v="construction"/>
+    <tag k="layer" v="1"/>
+    <tag k="lit" v="no"/>
+    <tag k="note" v="https://www.die-hellersdorfer.berlin/2022/10/27/einsturzgefahr-fu%C3%9Fg%C3%A4ngerbr%C3%BCcke-%C3%BCber-die-wuhle-gesperrt/"/>
+    <tag k="opening_date" v="2025-12-31"/>
+    <tag k="surface" v="metal"/>
+    <tag k="width" v="1"/>
+  </way>
+  <way id="300112418">
+    <bounds minlat="52.5433421" minlon="13.7748302" maxlat="52.5433763" maxlon="13.7749060"/>
+    <nd ref="9863489321" lat="52.5433763" lon="13.7748302"/>
+    <nd ref="9863489320" lat="52.5433421" lon="13.7749060"/>
+    <tag k="bicycle" v="dismount"/>
+    <tag k="bridge" v="yes"/>
+    <tag k="check_date" v="2024-08-15"/>
+    <tag k="construction" v="footway"/>
+    <tag k="construction_start_expected" v="08.2024"/>
+    <tag k="highway" v="construction"/>
+    <tag k="layer" v="1"/>
+    <tag k="lit" v="no"/>
+    <tag k="name" v="Heuwegbrücke"/>
+    <tag k="opening_date" v="01.2024"/>
+    <tag k="smoothness" v="intermediate"/>
+    <tag k="source:url" v="https://doppeldorf.de/aktuelles/details/projekt-heuwegbruecke/"/>
+    <tag k="surface" v="concrete"/>
+    <tag k="traffic_sign" v="DE:239;250"/>
+    <tag k="vehicle" v="no"/>
+    <tag k="width" v="1"/>
+  </way>
+
+</osm>
