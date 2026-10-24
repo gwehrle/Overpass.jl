@@ -3,6 +3,7 @@ module Overpass
 using Preferences
 using HTTP
 using Dates
+using Mocking
 
 export query, set_endpoint, status, turbo_url
 
@@ -56,7 +57,7 @@ function query(
     try
         # Start Overpass request
         @debug "Start request"
-        resp = HTTP.post(url, body = query)
+        resp = @mock HTTP.post(url, body = query)
 
         @debug("Data recieved")
         return String(resp.body)
@@ -133,7 +134,7 @@ Fetches and parses the current status of the Overpass API.
 function status()::Status
     url = @load_preference("endpoint", DEFAULT_ENDPOINT) * "status"
 
-    response = HTTP.get(url)
+    response = @mock HTTP.get(url)
 
     @debug "Status response" response
 

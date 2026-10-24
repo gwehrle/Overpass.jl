@@ -1,0 +1,181 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.4 2390de5a",
+  "osm3s": {
+    "timestamp_osm_base": "2024-12-04T13:17:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 172056499,
+  "nodes": [
+    3704516284,
+    3681120423
+  ],
+  "tags": {
+    "foot": "no",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "yes",
+    "smoothness": "good",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 237954461,
+  "nodes": [
+    1830052225,
+    2458145195,
+    3188614849,
+    1830052206,
+    2458145193,
+    3704516282
+  ],
+  "tags": {
+    "foot": "no",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 364005235,
+  "nodes": [
+    2458145203,
+    8524882702,
+    8524882703,
+    624470231
+  ],
+  "tags": {
+    "foot": "no",
+    "highway": "cycleway",
+    "lit": "yes",
+    "smoothness": "intermediate",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 364005236,
+  "nodes": [
+    1830052206,
+    2458145194,
+    1830052208,
+    1830052212,
+    1830052214,
+    3681120423,
+    2458145203
+  ],
+  "tags": {
+    "foot": "no",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "yes",
+    "smoothness": "good",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "node",
+  "id": 624470231,
+  "lat": 48.2259747,
+  "lon": 16.3626457
+},
+{
+  "type": "node",
+  "id": 1830052206,
+  "lat": 48.2260233,
+  "lon": 16.3620303
+},
+{
+  "type": "node",
+  "id": 1830052208,
+  "lat": 48.2260383,
+  "lon": 16.3621760
+},
+{
+  "type": "node",
+  "id": 1830052212,
+  "lat": 48.2260468,
+  "lon": 16.3622470
+},
+{
+  "type": "node",
+  "id": 1830052214,
+  "lat": 48.2260916,
+  "lon": 16.3624419
+},
+{
+  "type": "node",
+  "id": 1830052225,
+  "lat": 48.2262751,
+  "lon": 16.3619261
+},
+{
+  "type": "node",
+  "id": 2458145193,
+  "lat": 48.2259544,
+  "lon": 16.3620522
+},
+{
+  "type": "node",
+  "id": 2458145194,
+  "lat": 48.2260323,
+  "lon": 16.3621280
+},
+{
+  "type": "node",
+  "id": 2458145195,
+  "lat": 48.2261664,
+  "lon": 16.3619766
+},
+{
+  "type": "node",
+  "id": 2458145203,
+  "lat": 48.2260765,
+  "lon": 16.3625416
+},
+{
+  "type": "node",
+  "id": 3188614849,
+  "lat": 48.2260466,
+  "lon": 16.3620215
+},
+{
+  "type": "node",
+  "id": 3681120423,
+  "lat": 48.2261021,
+  "lon": 16.3625026
+},
+{
+  "type": "node",
+  "id": 3704516282,
+  "lat": 48.2259169,
+  "lon": 16.3620614
+},
+{
+  "type": "node",
+  "id": 3704516284,
+  "lat": 48.2261313,
+  "lon": 16.3626709
+},
+{
+  "type": "node",
+  "id": 8524882702,
+  "lat": 48.2260353,
+  "lon": 16.3625837
+},
+{
+  "type": "node",
+  "id": 8524882703,
+  "lat": 48.2260105,
+  "lon": 16.3626091
+}
+
+  ]
+}
