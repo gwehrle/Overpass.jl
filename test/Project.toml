@@ -10,4 +10,5 @@ TestSetExtensions = "98d24dd4-01ad-11ea-1b02-c9a08f80db04"
 [compat]
 Aqua = "0.8.18"
 HTTP = "2"
+Mocking = "0.8.1"
 TestSetExtensions = "4.0.3"
