@@ -10,6 +10,7 @@ Mocking = "78c3b35d-d492-501b-9361-3d52fe80e533"
 Preferences = "21216c6a-2e73-6563-6e65-726566657250"
 
 [compat]
+Dates = "1.10"
 HTTP = "1.10.8, 2"
 Mocking = "0.8"
 Preferences = "1.4.3"
